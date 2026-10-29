@@ -83,6 +83,8 @@ TEXTOS = {
         "perfis": "Perfis de acesso",
         "tela_inicial_de": "Tela inicial do perfil",
         "saude_do_servidor": "Saúde do servidor",
+        "texto_da_licenca": "Ler o texto completo da licença",
+        "o_que_significa": "o que isso significa",
         "perfis_texto": "Cada pessoa da clínica entra com o próprio usuário e senha, e vê só o que o perfil dela permite.",
         "pode": "Pode",
         "nao_pode": "Não pode",
@@ -144,6 +146,8 @@ TEXTOS = {
         "perfis": "Perfiles de acceso",
         "tela_inicial_de": "Pantalla de inicio del perfil",
         "saude_do_servidor": "Salud del servidor",
+        "texto_da_licenca": "Leer el texto completo de la licencia",
+        "o_que_significa": "qué significa",
         "perfis_texto": "Cada persona de la clínica entra con su propio usuario y contraseña, y ve solo lo que su perfil permite.",
         "pode": "Puede",
         "nao_pode": "No puede",
@@ -205,6 +209,8 @@ TEXTOS = {
         "perfis": "Access roles",
         "tela_inicial_de": "Home screen of the role",
         "saude_do_servidor": "Server health",
+        "texto_da_licenca": "Read the full license text",
+        "o_que_significa": "what this means",
         "perfis_texto": "Everyone at the clinic signs in with their own username and password, and sees only what their role allows.",
         "pode": "Can",
         "nao_pode": "Cannot",
@@ -267,7 +273,7 @@ def marca_svg(nome, cor):
     return svg[: svg.index("<title>")] + svg[svg.index("</title>") + 8 :]
 
 
-def com_licenca(texto, sistema, idioma):
+def com_licenca(texto, sistema, idioma, pagina=None):
     """The paragraph, escaped, with the system's license name as a bold link."""
     licenca = sistema.get("licenca")
     if not licenca:
@@ -276,11 +282,14 @@ def com_licenca(texto, sistema, idioma):
     link = Markup('<strong><a href="{}" target="_blank" rel="noopener">{}</a></strong>').format(
         licenca["url"], nome
     )
+    if pagina:
+        link += Markup(' (<a href="{}">{}</a>)').format(pagina, TEXTOS[idioma]["o_que_significa"])
     return escape(texto).replace(nome, link)
 
 
 def main():
     dados = yaml.safe_load((RAIZ / "sistemas.yaml").read_text(encoding="utf-8"))
+    licenca = yaml.safe_load((RAIZ / "licenca.yaml").read_text(encoding="utf-8"))
     for sistema in dados["sistemas"]:
         sistema["versao"] = versao_mais_nova(sistema["repositorio"])
     apoio = dados["site"]["apoio"]
@@ -302,7 +311,11 @@ def main():
         shutil.rmtree(SAIDA)
     shutil.copytree(RAIZ / "estatico", SAIDA)
     for idioma, pasta in IDIOMAS.items():
-        paginas = [("index.html", "inicio.html", None), ("sobre/index.html", "sobre.html", None)] + [
+        paginas = [
+            ("index.html", "inicio.html", None),
+            ("sobre/index.html", "sobre.html", None),
+            ("licenca/index.html", "licenca.html", None),
+        ] + [
             (f"{s['id']}/index.html", "sistema.html", s) for s in dados["sistemas"]
         ]
         for destino, modelo, sistema in paginas:
@@ -313,6 +326,7 @@ def main():
                 site=dados["site"],
                 sistemas=dados["sistemas"],
                 sobre=dados["sobre"],
+                licenca=licenca,
                 sistema=sistema,
                 idioma=idioma,
                 t=TEXTOS[idioma],

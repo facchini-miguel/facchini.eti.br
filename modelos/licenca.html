@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ licenca.titulo[idioma] }} · {{ site.titulo }}{% endblock %}
+{% block descricao %}{{ licenca.introducao[idioma] }}{% endblock %}
+
+{% block conteudo %}
+<section class="abertura">
+  <div class="largura">
+    <h1>{{ licenca.titulo[idioma] }}</h1>
+    <p class="chamada chamada-larga">{{ licenca.introducao[idioma] }}</p>
+    <div class="acoes"><a class="botao" href="{{ licenca.url_texto }}" target="_blank" rel="noopener">{{ t.texto_da_licenca }} →</a></div>
+  </div>
+</section>
+
+<section class="largura licenca">
+  <div class="licenca-blocos">
+    {% for bloco in licenca.blocos %}
+    <article class="licenca-bloco licenca-{{ bloco.estilo }}">
+      <h2>{{ bloco.titulo[idioma] }}</h2>
+      {% if bloco.itens %}
+      <ul class="{% if bloco.estilo == 'nao_pode' %}lista-nao-pode{% else %}lista-pode{% endif %}">
+        {% for item in bloco.itens %}<li>{{ item[idioma] }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if bloco.paragrafos %}{% for paragrafo in bloco.paragrafos[idioma] %}<p>{{ paragrafo }}</p>{% endfor %}{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  <p class="secundario aviso-licenca">{{ licenca.aviso[idioma] }}</p>
+</section>
+{% endblock %}

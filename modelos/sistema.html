@@ -96,7 +96,7 @@
     <ul class="recursos">{% for recurso in sistema.recursos %}<li>{{ recurso[idioma] }}</li>{% endfor %}</ul>
   </div>
   <div>
-    {% for paragrafo in sistema.descricao[idioma] %}<p>{{ paragrafo|com_licenca(sistema, idioma) }}</p>{% endfor %}
+    {% for paragrafo in sistema.descricao[idioma] %}<p>{{ paragrafo|com_licenca(sistema, idioma, raiz ~ prefixo ~ 'licenca/') }}</p>{% endfor %}
     <h3>{{ t.tecnologias }}</h3>
     <ul class="etiquetas">{% for tecnologia in sistema.tecnologias %}<li>{{ tecnologia }}</li>{% endfor %}</ul>
   </div>

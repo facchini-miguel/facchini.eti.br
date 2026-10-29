@@ -1,0 +1,56 @@
+# The "License" page: Apache 2.0 in practical terms, in the three languages.
+# Each block has a title, a style (pode, precisa, nao_pode or texto) and items or paragraphs.
+url_texto: https://www.apache.org/licenses/LICENSE-2.0
+titulo:
+  pt: A licença, em termos práticos
+  en: The license, in practical terms
+  es: La licencia, en términos prácticos
+introducao:
+  pt: Os sistemas daqui são de código aberto sob a Licença Apache 2.0, a mesma do Kubernetes e do Android. É uma licença permissiva, que deixa quase tudo, com poucas obrigações. Este é um resumo; o que vale é o texto da licença.
+  en: The systems here are open source under the Apache License 2.0, the same as Kubernetes and Android. It is a permissive license that allows almost everything, with few obligations. This is a summary; the license text is what counts.
+  es: Los sistemas de aquí son de código abierto bajo la Licencia Apache 2.0, la misma de Kubernetes y Android. Es una licencia permisiva, que permite casi todo, con pocas obligaciones. Esto es un resumen; lo que vale es el texto de la licencia.
+blocos:
+  - titulo: {pt: O que você pode fazer, en: What you can do, es: Lo que usted puede hacer}
+    estilo: pode
+    itens:
+      - {pt: "Usar de graça, inclusive para ganhar dinheiro: uma clínica usar no dia a dia, ou uma empresa instalar e cobrar pela instalação ou pelo suporte", en: "Use it for free, including to make money: a clinic using it every day, or a company installing it and charging for installation or support", es: "Usarlo gratis, incluso para ganar dinero: una clínica que lo usa a diario, o una empresa que lo instala y cobra por la instalación o el soporte"}
+      - {pt: "Modificar o código como quiser", en: "Change the code as you like", es: "Modificar el código como quiera"}
+      - {pt: "Redistribuir o original ou a sua versão modificada, de graça ou vendendo", en: "Redistribute the original or your modified version, for free or for sale", es: "Redistribuir el original o su versión modificada, gratis o vendiéndola"}
+      - {pt: "Manter as suas modificações fechadas: não é obrigatório publicar o que mudou", en: "Keep your changes closed: publishing what you changed is not required", es: "Mantener cerradas sus modificaciones: no es obligatorio publicar lo que cambió"}
+      - {pt: "Usar as patentes que existirem no código, sem risco de ser processado por isso", en: "Use any patents in the code, without risk of being sued for it", es: "Usar las patentes que existan en el código, sin riesgo de ser demandado por eso"}
+  - titulo: {pt: O que você precisa fazer, en: What you must do, es: Lo que usted debe hacer}
+    estilo: precisa
+    itens:
+      - {pt: "Levar junto, ao redistribuir, uma cópia da licença, os avisos de direito autoral e o arquivo NOTICE", en: "When redistributing, include a copy of the license, the copyright notices and the NOTICE file", es: "Al redistribuir, incluir una copia de la licencia, los avisos de derechos de autor y el archivo NOTICE"}
+      - {pt: "Avisar nos arquivos que você alterou que eles foram modificados", en: "Mark the files you changed as modified", es: "Indicar en los archivos que cambió que fueron modificados"}
+  - titulo: {pt: O que você não pode, en: What you cannot do, es: Lo que usted no puede hacer}
+    estilo: nao_pode
+    itens:
+      - {pt: "Usar o nome e o logo do sistema (por exemplo, Kaladrius) como se a sua versão fosse a oficial: a licença cobre o código, não a marca", en: "Use the system's name and logo (Kaladrius, for example) as if your version were the official one: the license covers the code, not the brand", es: "Usar el nombre y el logo del sistema (por ejemplo, Kaladrius) como si su versión fuera la oficial: la licencia cubre el código, no la marca"}
+      - {pt: "Exigir garantia do autor: o software vem como está, e o autor não responde por problemas no seu uso", en: "Hold the author to a warranty: the software comes as is, and the author is not liable for problems in your use", es: "Exigir garantía al autor: el software viene tal cual, y el autor no responde por problemas en su uso"}
+      - {pt: "Processar alguém dizendo que o código viola uma patente e continuar usando: quem faz isso perde a licença de patente", en: "Sue someone claiming the code infringes a patent and keep using it: whoever does so loses the patent license", es: "Demandar a alguien diciendo que el código viola una patente y seguir usándolo: quien lo hace pierde la licencia de patente"}
+  - titulo: {pt: O que continua com o autor, en: What stays with the author, es: Lo que sigue siendo del autor}
+    estilo: texto
+    paragrafos:
+      pt:
+        - O código pertence ao autor, e a licença vale para os outros. O autor pode oferecer instalação, hospedagem, suporte e personalização, e pode mudar a licença das próximas versões. As versões já publicadas continuam Apache 2.0 para sempre.
+        - A marca também fica com o autor. Quem fizer a própria versão deve dar a ela outro nome e outro logo.
+      en:
+        - The code belongs to the author, and the license applies to everyone else. The author can offer installation, hosting, support and customization, and can change the license of future versions. Versions already published stay Apache 2.0 forever.
+        - The brand also stays with the author. Whoever makes their own version must give it another name and logo.
+      es:
+        - El código pertenece al autor, y la licencia vale para los demás. El autor puede ofrecer instalación, alojamiento, soporte y personalización, y puede cambiar la licencia de las próximas versiones. Las versiones ya publicadas siguen siendo Apache 2.0 para siempre.
+        - La marca también queda con el autor. Quien haga su propia versión debe darle otro nombre y otro logo.
+  - titulo: {pt: Se você contribuir com código, en: If you contribute code, es: Si usted contribuye con código}
+    estilo: texto
+    paragrafos:
+      pt:
+        - O que você enviar entra no projeto sob a mesma Licença Apache 2.0, e o seu direito autoral sobre essa parte continua sendo seu. Veja as regras de contribuição de cada sistema no GitHub.
+      en:
+        - What you send joins the project under the same Apache License 2.0, and your copyright over that part stays yours. See each system's contribution guidelines on GitHub.
+      es:
+        - Lo que envíe entra al proyecto bajo la misma Licencia Apache 2.0, y sus derechos de autor sobre esa parte siguen siendo suyos. Vea las reglas de contribución de cada sistema en GitHub.
+aviso:
+  pt: Este resumo ajuda a entender, mas não é orientação jurídica. Para um caso concreto, como revender um sistema, consulte um advogado.
+  en: This summary helps you understand, but it is not legal advice. For a specific case, such as reselling a system, consult a lawyer.
+  es: Este resumen ayuda a entender, pero no es asesoramiento legal. Para un caso concreto, como revender un sistema, consulte a un abogado.

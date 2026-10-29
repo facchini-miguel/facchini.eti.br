@@ -5,7 +5,7 @@
   <div class="largura">
     <h1>{{ t.titulo_inicio }}</h1>
     <p class="chamada">{{ t.chamada }}</p>
-    <ul class="destaques">{% for destaque in t.destaques %}<li>{{ destaque }}</li>{% endfor %}</ul>
+    <ul class="destaques">{% for destaque in t.destaques %}<li>{% if loop.index == 2 %}<a href="{{ raiz }}{{ prefixo }}licenca/">{{ destaque }}</a>{% else %}{{ destaque }}{% endif %}</li>{% endfor %}</ul>
   </div>
 </section>
 

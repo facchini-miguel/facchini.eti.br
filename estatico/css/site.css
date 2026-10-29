@@ -227,3 +227,19 @@ h2.com-icone .marca-icone { width: 1.1em; height: 1.1em; }
   .perfil-destaque { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 1.5rem; align-items: start; }
   .perfil-destaque .perfil-texto h3 { margin-top: 0; }
 }
+
+/* License page: one card per block, "can" in green, "cannot" in red. */
+.chamada-larga { max-width: 52rem; }
+.destaques a { color: inherit; text-decoration: underline; text-decoration-color: var(--borda); text-underline-offset: 3px; }
+.licenca-blocos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 1rem; }
+.licenca-bloco { background: var(--superficie); border: 1px solid var(--borda); border-radius: 12px; padding: 1.25rem; box-shadow: var(--sombra); }
+.licenca-bloco h2 { font-size: 1.15rem; margin: 0 0 .75rem; }
+.licenca-bloco ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
+.licenca-bloco li { padding-left: 1.4rem; position: relative; }
+.licenca-pode { border-top: 4px solid #198754; }
+.licenca-precisa { border-top: 4px solid #0d6efd; }
+.licenca-precisa li::before { content: "→"; color: #0d6efd; }
+.licenca-nao_pode { border-top: 4px solid #dc3545; }
+.licenca-texto { border-top: 4px solid #6f42c1; }
+.licenca-bloco p:last-child { margin-bottom: 0; }
+.aviso-licenca { margin-top: 1.25rem; font-size: .9rem; }
