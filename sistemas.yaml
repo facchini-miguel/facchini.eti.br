@@ -5,6 +5,7 @@ site:
   titulo: Miguel Facchini
   github: https://github.com/facchini-miguel
   youtube: https://www.youtube.com/@404devopsnotfound
+  email: miguelfacchini@gmail.com
   # Ways to support the projects. Each one appears only when filled in.
   apoio:
     pix: 8ed9040e-2c49-40e1-a7bb-b6447bbc4223  # Pix random key (never the CPF)
@@ -154,3 +155,41 @@ sistemas:
       pt: O que um perfil não pode usar nem aparece na tela, e o servidor confere cada ação. Ninguém muda o próprio perfil, e a clínica sempre tem um administrador ativo.
       en: What a role cannot use does not even show on screen, and the server checks every action. Nobody changes their own role, and the clinic always has an active administrator.
       es: Lo que un perfil no puede usar ni siquiera aparece en pantalla, y el servidor verifica cada acción. Nadie cambia su propio perfil, y la clínica siempre tiene un administrador activo.
+
+# The "About" page: the owner and his YouTube channel.
+sobre:
+  foto: imagens/youtube/canal.jpg
+  texto:
+    pt:
+      - Sou o Miguel. Estou na frente de um computador desde a década de 80, trabalho há mais de 20 anos com tecnologia e hoje atuo como DevOps.
+      - Aqui ficam os sistemas de código aberto que eu desenvolvo, como o Kaladrius, e o meu canal no YouTube, onde ensino Linux e DevOps.
+    es:
+      - Soy Miguel. Estoy frente a una computadora desde los años 80, trabajo hace más de 20 años en tecnología y hoy me dedico a DevOps.
+      - Aquí están los sistemas de código abierto que desarrollo, como Kaladrius, y mi canal de YouTube, donde enseño Linux y DevOps.
+    en:
+      - I'm Miguel. I've been in front of a computer since the 1980s, I've worked in technology for more than 20 years, and today I work as a DevOps engineer.
+      - Here are the open-source systems I build, such as Kaladrius, and my YouTube channel, where I teach Linux and DevOps.
+  linkedin: https://www.linkedin.com/in/miguelfacchini
+  canal:
+    nome: 404 DevOps Not Found
+    url: https://www.youtube.com/@404devopsnotfound
+    descricao:
+      pt:
+        - Tutoriais de Linux e DevOps para ajudar na carreira de quem trabalha com DevOps, desenvolvimento, SRE e áreas próximas.
+        - Criação de ambientes e instalações do zero, com o código disponível, tutoriais e documentação, em servidores próprios (on-premises) e na nuvem. Os repositórios ficam no Git sempre que precisar.
+      es:
+        - Tutoriales de Linux y DevOps para ayudar en la carrera de quienes trabajan en DevOps, desarrollo, SRE y áreas cercanas.
+        - Creación de entornos e instalaciones desde cero, con el código disponible, tutoriales y documentación, en servidores propios (on-premises) y en la nube. Los repositorios quedan en Git cuando hace falta. Videos en portugués.
+      en:
+        - Linux and DevOps tutorials to help the careers of people working in DevOps, development, SRE and nearby fields.
+        - Building environments and installing from scratch, with the code available, tutorials and documentation, on your own servers (on-premises) and in the cloud. The repositories go on Git whenever needed. Videos in Portuguese.
+    topicos: [Docker, Kubernetes, CI/CD com Jenkins, Nexus, SonarQube, Ansible, Prometheus e Grafana, Terraform, YAML, Virtualização, Shell Script, On-premises, Cloud]
+    # Newest first. The thumbnail is saved in estatico/imagens/youtube/<id>.jpg.
+    videos:
+      - {id: PZzn4SdW_cE, titulo: Como Instalar o Visual Studio Code no Ubuntu 24.04 - EP7}
+      - {id: YIYyWDFAolc, titulo: Como Instalar o Discord no Ubuntu 24.04 Linux - EP6}
+      - {id: YsUIWFaKql4, titulo: Como Instalar o Opera Browser no Ubuntu 24.04 Linux - EP5}
+      - {id: C16XEq_Vwec, titulo: Como Instalar o Google Chrome no Ubuntu 24.04 Linux - EP4}
+      - {id: fBjNHVwkWaw, titulo: "Ubuntu Server 24.04.2: Instalação Rápida e Configuração SSH no KVM - EP3"}
+      - {id: vU0XxOAZD_Q, titulo: "Debian 12 Server: Instalação Rápida e Configuração SSH no KVM - EP2"}
+      - {id: ABTP8XVhZa4, titulo: "KVM no Linux: Instalação, Configuração e Gerenciamento - EP1"}

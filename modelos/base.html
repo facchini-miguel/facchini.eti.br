@@ -20,6 +20,7 @@
       </a>
       <nav class="menu">
         <a href="{{ raiz }}{{ prefixo }}#sistemas">{{ t.sistemas }}</a>
+        <a href="{{ raiz }}{{ prefixo }}sobre/">{{ t.sobre }}</a>
         <a href="{{ raiz }}{{ prefixo }}#apoiar">{{ t.apoiar }}</a>
         <a class="com-icone" href="{{ site.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">{{ marcas.github|safe }}<span class="rotulo">GitHub</span></a>
         {% if site.youtube %}<a class="com-icone" href="{{ site.youtube }}" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">{{ marcas.youtube|safe }}<span class="rotulo">YouTube</span></a>{% endif %}
@@ -38,7 +39,10 @@
   <footer class="rodape">
     <div class="largura">
       <span>© {{ site.titulo }} · {{ t.rodape }}</span>
-      <a href="{{ site.github }}" target="_blank" rel="noopener">github.com/facchini-miguel</a>
+      <span class="rodape-links">
+        {% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}
+        <a href="{{ site.github }}" target="_blank" rel="noopener">github.com/facchini-miguel</a>
+      </span>
     </div>
   </footer>
   <script src="{{ raiz }}js/copiar.js?v={{ versao_arquivos }}" defer></script>

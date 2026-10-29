@@ -21,7 +21,7 @@ RAIZ = Path(__file__).parent
 SAIDA = RAIZ / "_site"
 IDIOMAS = {"pt": "", "es": "es/", "en": "en/"}
 # Brand icons from Simple Icons (CC0), drawn inline in these colors.
-MARCAS = {"github": "currentColor", "youtube": "#FF0000", "kofi": "#FF5E5B", "pix": "#32BCAD"}
+MARCAS = {"email": "currentColor", "github": "currentColor", "linkedin": "#0A66C2", "youtube": "#FF0000", "kofi": "#FF5E5B", "pix": "#32BCAD"}
 
 TEXTOS = {
     "pt": {
@@ -29,6 +29,11 @@ TEXTOS = {
         "chamada": "Sistemas de código aberto, gratuitos, para o dia a dia de quem trabalha.",
         "sistemas": "Sistemas",
         "lema": "Sistemas de código aberto",
+        "sobre": "Sobre",
+        "topicos": "Alguns temas",
+        "inscrever": "Inscrever-se no canal",
+        "todos_videos": "Todos os vídeos",
+        "videos_recentes": "Vídeos recentes",
         "apoiar": "Apoiar",
         "versao": "versão",
         "demo": "Demonstração",
@@ -75,6 +80,11 @@ TEXTOS = {
         "chamada": "Sistemas de código abierto, gratuitos, para el día a día de quien trabaja.",
         "sistemas": "Sistemas",
         "lema": "Sistemas de código abierto",
+        "sobre": "Sobre mí",
+        "topicos": "Algunos temas",
+        "inscrever": "Suscribirse al canal",
+        "todos_videos": "Todos los videos",
+        "videos_recentes": "Videos recientes",
         "apoiar": "Apoyar",
         "versao": "versión",
         "demo": "Demostración",
@@ -121,6 +131,11 @@ TEXTOS = {
         "chamada": "Free, open-source systems for people's everyday work.",
         "sistemas": "Systems",
         "lema": "Open-source systems",
+        "sobre": "About",
+        "topicos": "Some topics",
+        "inscrever": "Subscribe to the channel",
+        "todos_videos": "All videos",
+        "videos_recentes": "Recent videos",
         "apoiar": "Support",
         "versao": "version",
         "demo": "Demo",
@@ -242,7 +257,7 @@ def main():
         shutil.rmtree(SAIDA)
     shutil.copytree(RAIZ / "estatico", SAIDA)
     for idioma, pasta in IDIOMAS.items():
-        paginas = [("index.html", "inicio.html", None)] + [
+        paginas = [("index.html", "inicio.html", None), ("sobre/index.html", "sobre.html", None)] + [
             (f"{s['id']}/index.html", "sistema.html", s) for s in dados["sistemas"]
         ]
         for destino, modelo, sistema in paginas:
@@ -252,6 +267,7 @@ def main():
             pagina = ambiente.get_template(modelo).render(
                 site=dados["site"],
                 sistemas=dados["sistemas"],
+                sobre=dados["sobre"],
                 sistema=sistema,
                 idioma=idioma,
                 t=TEXTOS[idioma],

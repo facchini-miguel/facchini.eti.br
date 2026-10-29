@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ t.sobre }} · {{ site.titulo }}{% endblock %}
+{% block descricao %}{{ sobre.texto[idioma][0] }}{% endblock %}
+
+{% block conteudo %}
+<section class="abertura">
+  <div class="largura sobre-abertura">
+    <img class="sobre-foto" src="{{ raiz }}{{ sobre.foto }}" alt="" width="120" height="120">
+    <div>
+      <h1>{{ site.titulo }}</h1>
+      {% for paragrafo in sobre.texto[idioma] %}<p class="chamada">{{ paragrafo }}</p>{% endfor %}
+      <div class="acoes">
+        <a class="botao com-icone" href="{{ site.github }}" target="_blank" rel="noopener">{{ marcas.github|safe }}GitHub</a>
+        {% if sobre.linkedin %}<a class="botao com-icone" href="{{ sobre.linkedin }}" target="_blank" rel="noopener">{{ marcas.linkedin|safe }}LinkedIn</a>{% endif %}
+        <a class="botao com-icone" href="{{ sobre.canal.url }}" target="_blank" rel="noopener">{{ marcas.youtube|safe }}YouTube</a>
+        {% if site.email %}<a class="botao com-icone" href="mailto:{{ site.email }}">{{ marcas.email|safe }}{{ site.email }}</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set canal = sobre.canal %}
+<section class="largura" id="canal">
+  <h2 class="com-icone">{{ marcas.youtube|safe }}{{ canal.nome }}</h2>
+  {% for paragrafo in canal.descricao[idioma] %}<p>{{ paragrafo }}</p>{% endfor %}
+  <h3>{{ t.topicos }}</h3>
+  <ul class="etiquetas">{% for topico in canal.topicos %}<li>{{ topico }}</li>{% endfor %}</ul>
+  <div class="acoes">
+    <a class="botao principal" href="{{ canal.url }}?sub_confirmation=1" target="_blank" rel="noopener">{{ t.inscrever }}</a>
+    <a class="botao" href="{{ canal.url }}/videos" target="_blank" rel="noopener">{{ t.todos_videos }}</a>
+  </div>
+
+  <h3>{{ t.videos_recentes }}</h3>
+  <div class="videos">
+    {% for video in canal.videos %}
+    <a class="video" href="https://www.youtube.com/watch?v={{ video.id }}" target="_blank" rel="noopener">
+      <span class="video-capa"><img src="{{ raiz }}imagens/youtube/{{ video.id }}.jpg" alt="" width="320" height="180" loading="lazy"><span class="video-play" aria-hidden="true">▶</span></span>
+      <span class="video-titulo">{{ video.titulo }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
