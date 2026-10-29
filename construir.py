@@ -6,6 +6,7 @@ www.facchini.eti.br and in the GitHub Pages preview address alike.
     pip install -r requirements.txt && python construir.py
 """
 
+import datetime
 import hashlib
 import json
 import shutil
@@ -275,6 +276,7 @@ def main():
                 prefixo=pasta,
                 marcas=marcas,
                 versao_arquivos=versao_arquivos,
+                ano=datetime.date.today().year,
                 # The same page in each language, for the flags in the header.
                 idiomas=[
                     {

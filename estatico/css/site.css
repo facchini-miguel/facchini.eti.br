@@ -107,8 +107,6 @@ h2 { font-size: 1.5rem; margin-top: 2.5rem; }
 a.apoio-opcao:hover { border-color: var(--destaque); }
 .chave { font-size: .95rem; word-break: break-all; }
 
-.rodape { padding: 1.5rem 0 2.5rem; color: var(--secundario); font-size: .9rem; }
-.rodape .largura { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; }
 
 /* The QR code stays black on white in both themes, so bank apps read it. */
 .pix-qr { background: #fff; border-radius: 8px; padding: .5rem; width: 12rem; }
@@ -196,5 +194,15 @@ h2.com-icone .marca-icone { width: 1.1em; height: 1.1em; }
   background: #ff0000; color: #fff; border-radius: 10px; font-size: .95rem; opacity: .9; }
 .video-titulo { font-size: .95rem; line-height: 1.35; }
 .video:hover .video-titulo { color: var(--destaque); }
-.rodape-links { display: inline-flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
 #canal h3 { margin-top: 1.75rem; }
+
+/* Footer: the same brand line as the top bar, the logo, a short menu and the credits. */
+.rodape { margin-top: 2rem; background: var(--superficie); color: var(--secundario); font-size: .9rem; }
+.rodape::before { content: ""; display: block; height: 3px; background: linear-gradient(90deg, #0d6efd, #6f42c1, #d63384); }
+.rodape-conteudo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding-block: 1.75rem 1.25rem; }
+.rodape-menu { display: flex; flex-wrap: wrap; gap: .25rem .5rem; }
+.rodape-menu a { color: var(--secundario); text-decoration: none; padding: .3rem .55rem; border-radius: 8px; transition: background .15s, color .15s; }
+.rodape-menu a:hover { color: var(--texto); background: var(--fundo); }
+.rodape-final { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; padding-block: 1rem 1.75rem;
+  border-top: 1px solid var(--borda); font-size: .85rem; }
+.rodape-final img { border-radius: 2px; }
