@@ -11,7 +11,7 @@ site:
     pix_nome: MIGUEL FACCHINI
     pix_cidade: SAO LEOPOLDO
     github_sponsors: ""  # e.g. https://github.com/sponsors/facchini-miguel
-    kofi: ""             # e.g. https://ko-fi.com/<user>
+    kofi: https://ko-fi.com/404devopsnotfound
 
 sistemas:
   - id: kaladrius
