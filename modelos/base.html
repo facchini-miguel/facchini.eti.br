@@ -16,6 +16,7 @@
         <a href="{{ raiz }}{{ prefixo }}#sistemas">{{ t.sistemas }}</a>
         <a href="{{ raiz }}{{ prefixo }}#apoiar">{{ t.apoiar }}</a>
         <a class="com-icone" href="{{ site.github }}" target="_blank" rel="noopener">{{ marcas.github|safe }}GitHub</a>
+        {% if site.youtube %}<a class="com-icone" href="{{ site.youtube }}" target="_blank" rel="noopener">{{ marcas.youtube|safe }}YouTube</a>{% endif %}
         <span class="idiomas">
           {% for i in idiomas %}
           <a href="{{ i.url }}" lang="{{ i.lang }}" hreflang="{{ i.lang }}" title="{{ i.nome }}"{% if i.codigo == idioma %} aria-current="page"{% endif %}><img src="{{ raiz }}imagens/bandeiras/{{ i.codigo }}.svg" alt="{{ i.nome }}" width="24" height="17"></a>

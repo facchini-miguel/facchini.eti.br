@@ -21,7 +21,7 @@ RAIZ = Path(__file__).parent
 SAIDA = RAIZ / "_site"
 IDIOMAS = {"pt": "", "es": "es/", "en": "en/"}
 # Brand icons from Simple Icons (CC0), drawn inline in these colors.
-MARCAS = {"github": "currentColor", "kofi": "#FF5E5B", "pix": "#32BCAD"}
+MARCAS = {"github": "currentColor", "youtube": "#FF0000", "kofi": "#FF5E5B", "pix": "#32BCAD"}
 
 TEXTOS = {
     "pt": {

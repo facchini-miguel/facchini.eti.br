@@ -4,6 +4,7 @@
 site:
   titulo: Miguel Facchini
   github: https://github.com/facchini-miguel
+  youtube: https://www.youtube.com/@404devopsnotfound
   # Ways to support the projects. Each one appears only when filled in.
   apoio:
     pix: 8ed9040e-2c49-40e1-a7bb-b6447bbc4223  # Pix random key (never the CPF)
@@ -62,7 +63,7 @@ sistemas:
     tecnologias: [Python, Django, PostgreSQL, HTMX, Bootstrap, Docker]
     links:
       demo: https://kaladrius.facchini.eti.br
-      documentacao: https://docs.facchini.eti.br
+      documentacao: https://kaladrius-docs.facchini.eti.br
       github: https://github.com/facchini-miguel/kaladrius
       versoes: https://github.com/facchini-miguel/kaladrius/releases
       app: ""
