@@ -11,12 +11,18 @@
 <body>
   <header class="topo">
     <div class="largura topo-conteudo">
-      <a class="marca" href="{{ raiz }}{{ prefixo }}">{{ site.titulo }}</a>
+      <a class="marca" href="{{ raiz }}{{ prefixo }}">
+        <img class="marca-logo" src="{{ raiz }}imagens/favicon.svg" alt="" width="36" height="36">
+        <span class="marca-texto">
+          <span class="marca-nome">{{ site.titulo }}</span>
+          <span class="marca-lema">{{ t.lema }}</span>
+        </span>
+      </a>
       <nav class="menu">
         <a href="{{ raiz }}{{ prefixo }}#sistemas">{{ t.sistemas }}</a>
         <a href="{{ raiz }}{{ prefixo }}#apoiar">{{ t.apoiar }}</a>
-        <a class="com-icone" href="{{ site.github }}" target="_blank" rel="noopener">{{ marcas.github|safe }}GitHub</a>
-        {% if site.youtube %}<a class="com-icone" href="{{ site.youtube }}" target="_blank" rel="noopener">{{ marcas.youtube|safe }}YouTube</a>{% endif %}
+        <a class="com-icone" href="{{ site.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">{{ marcas.github|safe }}<span class="rotulo">GitHub</span></a>
+        {% if site.youtube %}<a class="com-icone" href="{{ site.youtube }}" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">{{ marcas.youtube|safe }}<span class="rotulo">YouTube</span></a>{% endif %}
         <span class="idiomas">
           {% for i in idiomas %}
           <a href="{{ i.url }}" lang="{{ i.lang }}" hreflang="{{ i.lang }}" title="{{ i.nome }}"{% if i.codigo == idioma %} aria-current="page"{% endif %}><img src="{{ raiz }}imagens/bandeiras/{{ i.codigo }}.svg" alt="{{ i.nome }}" width="24" height="17"></a>

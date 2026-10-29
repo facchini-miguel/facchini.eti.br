@@ -40,11 +40,17 @@ h2 { font-size: 1.5rem; margin-top: 2.5rem; }
 .secundario { color: var(--secundario); }
 
 .topo { background: var(--superficie); border-bottom: 1px solid var(--borda); }
-.topo-conteudo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; min-height: 3.5rem; }
-.marca { font-weight: 700; color: var(--texto); text-decoration: none; }
-.menu { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
-.menu a { color: var(--secundario); text-decoration: none; }
-.menu a:hover { color: var(--texto); }
+.topo-conteudo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; min-height: 4rem; padding: .35rem 0; }
+.marca { display: inline-flex; align-items: center; gap: .65rem; color: var(--texto); text-decoration: none; }
+.marca-logo { display: block; border-radius: 10px; box-shadow: 0 2px 8px rgb(13 110 253 / 30%); transition: transform .2s; }
+.marca:hover .marca-logo { transform: rotate(-6deg) scale(1.05); }
+.marca-texto { display: flex; flex-direction: column; line-height: 1.15; }
+.marca-nome { font-weight: 800; font-size: 1.1rem; letter-spacing: -.01em; }
+.marca-lema { font-size: .78rem; color: var(--secundario); }
+.menu { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .6rem; }
+.menu a { color: var(--secundario); text-decoration: none; padding: .3rem .55rem; border-radius: 8px; transition: background .15s, color .15s; }
+.menu a:hover { color: var(--texto); background: var(--fundo); }
+.menu .idiomas a { padding: 2px; }
 
 .abertura { padding: 3.5rem 0 1rem; }
 .chamada { font-size: 1.2rem; color: var(--secundario); max-width: 42rem; }
@@ -157,10 +163,20 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 .perfis-nota { margin-top: 1rem; }
 
 /* The top bar stays visible while scrolling; anchored sections stop below it. */
-.topo { position: sticky; top: 0; z-index: 10; background: var(--superficie); }
+.topo { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--superficie) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); }
+/* A thin brand-colored line on top of the bar. */
+.topo::before { content: ""; display: block; height: 3px; background: linear-gradient(90deg, #0d6efd, #6f42c1, #d63384); }
 [id] { scroll-margin-top: 5rem; }
 .perfil-tela { cursor: zoom-in; display: block; }
 
 /* Copy buttons in the Pix card. */
 .botao.copiar { align-self: flex-start; margin: .35rem 0 .6rem; font: inherit; cursor: pointer; }
 .botao.copiar.copiado { background: #198754; border-color: #198754; color: #fff; }
+
+/* On phones GitHub and YouTube show only their icons, so the menu fits on one line. */
+@media (max-width: 640px) {
+  .menu { gap: .1rem .15rem; }
+  .menu .rotulo { display: none; }
+  .menu .marca-icone { width: 1.35em; height: 1.35em; }
+}
