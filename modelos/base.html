@@ -37,20 +37,6 @@
     {% include "_apoio.html" %}
   </main>
   <footer class="rodape">
-    <div class="largura rodape-conteudo">
-      <a class="marca" href="{{ raiz }}{{ prefixo }}">
-        <img class="marca-logo" src="{{ raiz }}imagens/logo.svg" alt="" width="48" height="26">
-        <span class="marca-texto">
-          <span class="marca-nome">{{ site.titulo }}</span>
-          <span class="marca-lema">{{ t.lema }}</span>
-        </span>
-      </a>
-      <nav class="rodape-menu">
-        <a href="{{ raiz }}{{ prefixo }}#sistemas">{{ t.sistemas }}</a>
-        <a href="{{ raiz }}{{ prefixo }}sobre/">{{ t.sobre }}</a>
-        <a href="{{ raiz }}{{ prefixo }}#apoiar">{{ t.apoiar }}</a>
-      </nav>
-    </div>
     <div class="largura rodape-final">
       <span>© {{ ano }} {{ site.titulo }}</span>
       <span class="com-icone">{{ t.rodape }} <img src="{{ raiz }}imagens/bandeiras/pt.svg" alt="" width="20" height="14"></span>
