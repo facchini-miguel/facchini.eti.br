@@ -10,7 +10,7 @@ site:
     # Required by the Pix QR code standard (BR Code); shown by the payer's bank app.
     pix_nome: MIGUEL FACCHINI
     pix_cidade: SAO LEOPOLDO
-    github_sponsors: ""  # e.g. https://github.com/sponsors/facchini-miguel
+    github_sponsors: https://github.com/sponsors/facchini-miguel
     kofi: https://ko-fi.com/404devopsnotfound
 
 sistemas:
