@@ -201,3 +201,12 @@ h2.com-icone .marca-icone { width: 1.1em; height: 1.1em; }
 .rodape { margin-top: 2rem; background: var(--superficie); color: var(--secundario); font-size: .9rem; }
 .rodape-final { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; padding-block: 1.25rem 1.5rem; font-size: .85rem; }
 .rodape-final img { border-radius: 2px; }
+
+/* Demo logins: one card per role with copyable username and password. */
+.acessos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.acesso { background: var(--superficie); border: 1px solid var(--borda); border-radius: 12px; padding: 1rem; box-shadow: var(--sombra); }
+.acesso dl { display: grid; grid-template-columns: auto 1fr; gap: .4rem .75rem; align-items: center; margin: .6rem 0 0; }
+.acesso dt { color: var(--secundario); font-size: .9rem; }
+.acesso dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.acesso .botao.copiar { margin: 0; padding: .2rem .6rem; font-size: .85rem; }
+.aviso-demo { font-size: .9rem; margin-top: .75rem; }

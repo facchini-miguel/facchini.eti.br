@@ -26,6 +26,30 @@
   </div>
 </section>
 
+{% if sistema.acessos and links.demo %}
+<section class="largura" id="experimente">
+  <h2>{{ t.experimente }}</h2>
+  <p class="secundario">{{ t.experimente_texto }}</p>
+  <div class="acessos">
+    {% for acesso in sistema.acessos %}
+    <div class="acesso">
+      <strong>{{ acesso.perfil[idioma] }}</strong>
+      <dl>
+        <dt>{{ t.usuario }}</dt>
+        <dd><code id="acesso-{{ loop.index }}-usuario">{{ acesso.usuario }}</code>
+          <button type="button" class="botao copiar" data-copiar="acesso-{{ loop.index }}-usuario" data-copiado="{{ t.copiado }}">{{ t.copiar }}</button></dd>
+        <dt>{{ t.senha }}</dt>
+        <dd><code id="acesso-{{ loop.index }}-senha">{{ acesso.senha }}</code>
+          <button type="button" class="botao copiar" data-copiar="acesso-{{ loop.index }}-senha" data-copiado="{{ t.copiado }}">{{ t.copiar }}</button></dd>
+      </dl>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="acoes"><a class="botao principal" href="{{ links.demo }}" target="_blank" rel="noopener">{{ t.entrar_demo }} →</a></div>
+  <p class="secundario aviso-demo">{{ t.aviso_demo }}</p>
+</section>
+{% endif %}
+
 {% if sistema.telas %}
 <section class="largura">
   <h2>{{ t.telas }}</h2>

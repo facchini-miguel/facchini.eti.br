@@ -103,6 +103,14 @@ sistemas:
         legenda: {pt: Novidades de cada versão, en: What's new in each version, es: Novedades de cada versión}
       - arquivo: imagens/kaladrius/login.png
         legenda: {pt: Tela de entrada, en: Sign-in page, es: Pantalla de acceso}
+    # Public demo logins (Kaladrius decision 085): they cannot change the password nor upload files.
+    acessos:
+      - perfil: {pt: Recepção, en: Front desk, es: Recepción}
+        usuario: demo.recepcao
+        senha: demo-recepcao-2026
+      - perfil: {pt: Profissional, en: Practitioner, es: Profesional}
+        usuario: demo.profissional
+        senha: demo-profissional-2026
     # Access roles: each login sees and does only what its role allows.
     perfis:
       - nome: {pt: Recepção, en: Front desk, es: Recepción}
