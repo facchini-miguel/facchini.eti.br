@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<section class="abertura">
+  <div class="largura">
+    <h1>{{ site.titulo }}</h1>
+    <p class="chamada">{{ t.chamada }}</p>
+  </div>
+</section>
+
+<section class="largura" id="sistemas">
+  <h2>{{ t.sistemas }}</h2>
+  <div class="grade">
+    {% for sistema in sistemas %}
+    <a class="cartao" href="{{ raiz }}{% if idioma == 'en' %}en/{% endif %}{{ sistema.id }}/">
+      <div class="cartao-topo">
+        <img src="{{ raiz }}{{ sistema.logo }}" alt="" width="48" height="48">
+        <div>
+          <h3>{{ sistema.nome }}</h3>
+          {% if sistema.versao %}<span class="selo">{{ t.versao }} {{ sistema.versao }}</span>{% endif %}
+        </div>
+      </div>
+      {% if sistema.telas %}<img class="cartao-tela" src="{{ raiz }}{{ sistema.telas[0].arquivo }}" alt="{{ sistema.telas[0].legenda[idioma] }}" loading="lazy">{% endif %}
+      <p>{{ sistema.resumo[idioma] }}</p>
+      <ul class="etiquetas">{% for tecnologia in sistema.tecnologias %}<li>{{ tecnologia }}</li>{% endfor %}</ul>
+      <span class="saiba-mais">{{ t.saiba_mais }} →</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

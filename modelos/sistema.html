@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ sistema.nome }} · {{ site.titulo }}{% endblock %}
+{% block descricao %}{{ sistema.resumo[idioma] }}{% endblock %}
+
+{% block conteudo %}
+<section class="abertura abertura-sistema">
+  <div class="largura">
+    <a class="voltar" href="{{ raiz }}{% if idioma == 'en' %}en/{% endif %}">← {{ t.voltar }}</a>
+    <div class="sistema-titulo">
+      <img src="{{ raiz }}{{ sistema.logo }}" alt="" width="72" height="72">
+      <div>
+        <h1>{{ sistema.nome }}</h1>
+        <p class="secundario">{% if sistema.versao %}{{ t.versao }} {{ sistema.versao }} · {% endif %}{{ sistema.situacao[idioma] }}</p>
+      </div>
+    </div>
+    <p class="chamada">{{ sistema.resumo[idioma] }}</p>
+    {% set links = sistema.links %}
+    <div class="acoes">
+      {% if links.demo %}<a class="botao principal" href="{{ links.demo }}">{{ t.demo }}</a>{% endif %}
+      {% if links.documentacao %}<a class="botao" href="{{ links.documentacao }}">{{ t.documentacao }}</a>{% endif %}
+      {% if links.github %}<a class="botao" href="{{ links.github }}">{{ t.codigo }}</a>{% endif %}
+      {% if links.versoes %}<a class="botao" href="{{ links.versoes }}">{{ t.versoes }}</a>{% endif %}
+      {% if links.app %}<a class="botao" href="{{ links.app }}">{{ t.app }}</a>{% else %}<span class="botao inativo">{{ t.app_em_breve }}</span>{% endif %}
+    </div>
+  </div>
+</section>
+
+{% if sistema.telas %}
+<section class="largura">
+  <h2>{{ t.telas }}</h2>
+  <p class="secundario">{{ t.dados_ficticios }}</p>
+  <div class="telas">
+    {% for tela in sistema.telas %}
+    <figure class="{% if loop.first %}tela-destaque{% endif %}">
+      <a href="{{ raiz }}{{ tela.arquivo }}"><img src="{{ raiz }}{{ tela.arquivo }}" alt="{{ tela.legenda[idioma] }}" loading="{{ 'eager' if loop.first else 'lazy' }}"></a>
+      <figcaption>{{ tela.legenda[idioma] }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="largura colunas">
+  <div>
+    <h2>{{ t.recursos }}</h2>
+    <ul class="recursos">{% for recurso in sistema.recursos %}<li>{{ recurso[idioma] }}</li>{% endfor %}</ul>
+  </div>
+  <div>
+    {% for paragrafo in sistema.descricao[idioma] %}<p>{{ paragrafo }}</p>{% endfor %}
+    <h3>{{ t.tecnologias }}</h3>
+    <ul class="etiquetas">{% for tecnologia in sistema.tecnologias %}<li>{{ tecnologia }}</li>{% endfor %}</ul>
+  </div>
+</section>
+{% endblock %}

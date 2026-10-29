@@ -1,0 +1,68 @@
+# Everything the website shows. To add a system, add one item to "sistemas".
+# Texts have a Portuguese (pt) and an English (en) version. A link left empty is hidden.
+
+site:
+  titulo: Miguel Facchini
+  github: https://github.com/facchini-miguel
+  # Ways to support the projects. Each one appears only when filled in.
+  apoio:
+    pix: ""              # Pix key (an e-mail or a random key; avoid the CPF)
+    github_sponsors: ""  # e.g. https://github.com/sponsors/facchini-miguel
+    kofi: ""             # e.g. https://ko-fi.com/<user>
+
+sistemas:
+  - id: kaladrius
+    nome: Kaladrius
+    logo: imagens/kaladrius/logo.svg
+    # The newest version comes from the GitHub releases when the site is built.
+    repositorio: facchini-miguel/kaladrius
+    situacao:
+      pt: Em desenvolvimento, em uso de demonstração
+      en: In development, running as a demo
+    resumo:
+      pt: Gestão de clínicas de saúde, de código aberto. Agenda, pacientes, prontuário, orçamentos, rechamadas e financeiro num só sistema web.
+      en: Open-source management for health clinics. Schedule, patients, medical record, estimates, recalls and finance in one web app.
+    descricao:
+      pt:
+        - O Kaladrius é um sistema web para clínicas odontológicas, médicas e de outras áreas da saúde. Funciona em qualquer navegador, no computador ou no celular, e cada clínica pode instalar no próprio servidor.
+        - O nome vem do caladrius, a ave branca das lendas medievais que cura os doentes com o olhar.
+        - É gratuito e de código aberto, sob a Licença Apache 2.0, e está em português, inglês e espanhol.
+      en:
+        - Kaladrius is a web app for dental, medical and other health clinics. It runs in any browser, on a computer or a phone, and each clinic can install it on its own server.
+        - The name comes from the caladrius, the white bird of medieval legends that cures the sick by looking at them.
+        - It is free and open source, under the Apache License 2.0, and available in Portuguese, English and Spanish.
+    recursos:
+      - pt: Agenda por profissional, com presença, faltas e horários bloqueados
+        en: Schedule per practitioner, with attendance, no-shows and blocked times
+      - pt: Cadastro de pacientes, aniversariantes e rechamadas de retorno
+        en: Patient records, birthdays and follow-up recalls
+      - pt: Prontuário com anamnese, atestados, receitas, pedidos de exames e anexos
+        en: Medical record with anamnesis, certificates, prescriptions, exam requests and attachments
+      - pt: Orçamentos com tabela de procedimentos e odontograma
+        en: Estimates with a procedure price list and dental chart
+      - pt: Financeiro com caixa do dia, contas a receber e a pagar, comissões e extrato bancário
+        en: Finance with the daily cash, receivables and payables, commissions and bank statements
+      - pt: Perfis de acesso, auditoria e regras da LGPD
+        en: Access roles, audit log and Brazilian data protection (LGPD) rules
+    tecnologias: [Python, Django, PostgreSQL, HTMX, Bootstrap, Docker]
+    links:
+      demo: https://kaladrius.duckdns.org
+      documentacao: https://docs.kaladrius.duckdns.org
+      github: https://github.com/facchini-miguel/kaladrius
+      versoes: https://github.com/facchini-miguel/kaladrius/releases
+      app: ""
+    telas:
+      - arquivo: imagens/kaladrius/inicio.png
+        legenda: {pt: Resumo do dia na tela de início, en: Summary of the day on the home page}
+      - arquivo: imagens/kaladrius/agenda.png
+        legenda: {pt: Agenda da semana por profissional, en: Weekly schedule per practitioner}
+      - arquivo: imagens/kaladrius/prontuario.png
+        legenda: {pt: Atendimento no prontuário, en: A visit in the medical record}
+      - arquivo: imagens/kaladrius/orcamento.png
+        legenda: {pt: Orçamento com odontograma, en: Estimate with the dental chart}
+      - arquivo: imagens/kaladrius/fluxo-de-caixa.png
+        legenda: {pt: Fluxo de caixa, en: Cash flow}
+      - arquivo: imagens/kaladrius/ficha.png
+        legenda: {pt: Ficha do paciente, en: Patient record}
+      - arquivo: imagens/kaladrius/pacientes.png
+        legenda: {pt: Lista de pacientes, en: Patient list}

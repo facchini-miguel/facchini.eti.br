@@ -1,0 +1,26 @@
+<section class="apoio" id="apoiar">
+  <div class="largura">
+    <h2>{{ t.apoiar }}</h2>
+    <p class="secundario">{{ t.apoio_texto }}</p>
+    {% set apoio = site.apoio %}
+    {% if apoio.pix or apoio.github_sponsors or apoio.kofi %}
+    <div class="apoio-opcoes">
+      {% if apoio.pix %}
+      <div class="apoio-opcao">
+        <strong>{{ t.pix }}</strong>
+        <span class="secundario">{{ t.pix_chave }}</span>
+        <code class="chave">{{ apoio.pix }}</code>
+      </div>
+      {% endif %}
+      {% if apoio.github_sponsors %}
+      <a class="apoio-opcao" href="{{ apoio.github_sponsors }}"><strong>{{ t.sponsors }}</strong><span class="secundario">github.com/sponsors</span></a>
+      {% endif %}
+      {% if apoio.kofi %}
+      <a class="apoio-opcao" href="{{ apoio.kofi }}"><strong>{{ t.kofi }}</strong><span class="secundario">ko-fi.com</span></a>
+      {% endif %}
+    </div>
+    {% else %}
+    <p class="secundario"><em>{{ t.apoio_em_breve }}</em></p>
+    {% endif %}
+  </div>
+</section>
