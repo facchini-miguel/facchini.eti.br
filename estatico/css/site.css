@@ -210,3 +210,11 @@ h2.com-icone .marca-icone { width: 1.1em; height: 1.1em; }
 .acesso dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .acesso .botao.copiar { margin: 0; padding: .2rem .6rem; font-size: .85rem; }
 .aviso-demo { font-size: .9rem; margin-top: .75rem; }
+
+/* Home: a short headline about the systems, then the system cards right away. */
+.abertura-inicio { padding: 3rem 0 1.5rem; }
+.abertura-inicio h1 { width: fit-content; margin: 0 0 .5rem; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.02em;
+  background: linear-gradient(90deg, #0d6efd, #6f42c1, #d63384); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.destaques { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.destaques li { padding: .3rem .75rem; border-radius: 999px; background: var(--superficie); border: 1px solid var(--borda); font-size: .9rem; }
+.destaques li::before { content: "✓ "; color: #198754; font-weight: 700; }

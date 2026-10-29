@@ -27,7 +27,9 @@ MARCAS = {"email": "currentColor", "github": "currentColor", "linkedin": "#0A66C
 TEXTOS = {
     "pt": {
         "lang": "pt-BR",
-        "chamada": "Sistemas de código aberto, gratuitos, para o dia a dia de quem trabalha.",
+        "titulo_inicio": "Sistemas para usar, instalar e melhorar",
+        "chamada": "Gratuitos e de código aberto, para o dia a dia de quem trabalha.",
+        "destaques": ["Gratuitos", "Código aberto (Apache 2.0)", "Instale no seu servidor", "Português, inglês e espanhol"],
         "sistemas": "Sistemas",
         "lema": "Sistemas de código aberto",
         "sobre": "Sobre",
@@ -85,7 +87,9 @@ TEXTOS = {
     },
     "es": {
         "lang": "es",
-        "chamada": "Sistemas de código abierto, gratuitos, para el día a día de quien trabaja.",
+        "titulo_inicio": "Sistemas para usar, instalar y mejorar",
+        "chamada": "Gratuitos y de código abierto, para el día a día de quien trabaja.",
+        "destaques": ["Gratuitos", "Código abierto (Apache 2.0)", "Instálelos en su servidor", "Portugués, inglés y español"],
         "sistemas": "Sistemas",
         "lema": "Sistemas de código abierto",
         "sobre": "Sobre mí",
@@ -143,7 +147,9 @@ TEXTOS = {
     },
     "en": {
         "lang": "en",
-        "chamada": "Free, open-source systems for people's everyday work.",
+        "titulo_inicio": "Systems to use, install and improve",
+        "chamada": "Free and open source, for people's everyday work.",
+        "destaques": ["Free", "Open source (Apache 2.0)", "Install on your own server", "Portuguese, English and Spanish"],
         "sistemas": "Systems",
         "lema": "Open-source systems",
         "sobre": "About",
