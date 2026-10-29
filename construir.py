@@ -49,6 +49,10 @@ TEXTOS = {
         "rodape": "Código aberto, feito no Brasil.",
         "outro_idioma": "English",
         "dados_ficticios": "As telas mostram apenas dados fictícios.",
+        "dica_galeria": "Clique numa tela para ampliar; as setas do teclado ou a roda do mouse passam para a próxima.",
+        "anterior": "Tela anterior",
+        "proxima": "Próxima tela",
+        "fechar": "Fechar",
     },
     "en": {
         "lang": "en",
@@ -78,6 +82,10 @@ TEXTOS = {
         "rodape": "Open source, made in Brazil.",
         "outro_idioma": "Português",
         "dados_ficticios": "The screens show fake data only.",
+        "dica_galeria": "Click a screen to enlarge it; the arrow keys or the mouse wheel move to the next one.",
+        "anterior": "Previous screen",
+        "proxima": "Next screen",
+        "fechar": "Close",
     },
 }
 

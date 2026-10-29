@@ -29,8 +29,8 @@
 {% if sistema.telas %}
 <section class="largura">
   <h2>{{ t.telas }}</h2>
-  <p class="secundario">{{ t.dados_ficticios }}</p>
-  <div class="telas">
+  <p class="secundario">{{ t.dados_ficticios }} {{ t.dica_galeria }}</p>
+  <div class="telas" data-anterior="{{ t.anterior }}" data-proxima="{{ t.proxima }}" data-fechar="{{ t.fechar }}">
     {% for tela in sistema.telas %}
     <figure class="{% if loop.first %}tela-destaque{% endif %}">
       <a href="{{ raiz }}{{ tela.arquivo }}"><img src="{{ raiz }}{{ tela.arquivo }}" alt="{{ tela.legenda[idioma] }}" loading="{{ 'eager' if loop.first else 'lazy' }}"></a>
@@ -39,6 +39,7 @@
     {% endfor %}
   </div>
 </section>
+<script src="{{ raiz }}js/galeria.js" defer></script>
 {% endif %}
 
 <section class="largura colunas">
