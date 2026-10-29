@@ -203,7 +203,8 @@ h2.com-icone .marca-icone { width: 1.1em; height: 1.1em; }
 .rodape-final img { border-radius: 2px; }
 
 /* Demo logins: one card per role with copyable username and password. */
-.acessos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.acessos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 1rem; }
+.acesso code { white-space: nowrap; }
 .acesso { background: var(--superficie); border: 1px solid var(--borda); border-radius: 12px; padding: 1rem; box-shadow: var(--sombra); }
 .acesso dl { display: grid; grid-template-columns: auto 1fr; gap: .4rem .75rem; align-items: center; margin: .6rem 0 0; }
 .acesso dt { color: var(--secundario); font-size: .9rem; }
