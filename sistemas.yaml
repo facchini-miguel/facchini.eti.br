@@ -50,7 +50,7 @@ sistemas:
     tecnologias: [Python, Django, PostgreSQL, HTMX, Bootstrap, Docker]
     links:
       demo: https://kaladrius.facchini.eti.br
-      documentacao: https://docs.kaladrius.duckdns.org
+      documentacao: https://docs.facchini.eti.br
       github: https://github.com/facchini-miguel/kaladrius
       versoes: https://github.com/facchini-miguel/kaladrius/releases
       app: ""
