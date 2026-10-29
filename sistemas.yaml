@@ -95,6 +95,8 @@ sistemas:
         legenda: {pt: Equipe e perfis de acesso, en: Team and access roles, es: Equipo y perfiles de acceso}
       - arquivo: imagens/kaladrius/auditoria.png
         legenda: {pt: Auditoria de quem fez o quê, en: Audit log of who did what, es: Auditoría de quién hizo qué}
+      - arquivo: imagens/kaladrius/saude.png
+        legenda: {pt: "Saúde do servidor: processador, memória, disco e rede", en: "Server health: processor, memory, disk and network", es: "Salud del servidor: procesador, memoria, disco y red"}
       - arquivo: imagens/kaladrius/novidades.png
         legenda: {pt: Novidades de cada versão, en: What's new in each version, es: Novedades de cada versión}
       - arquivo: imagens/kaladrius/login.png

@@ -155,3 +155,7 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 .lista-pode li::before { content: "✓"; position: absolute; left: 0; color: #198754; font-weight: 700; }
 .lista-nao-pode li::before { content: "✗"; position: absolute; left: 0; color: #dc3545; font-weight: 700; }
 .perfis-nota { margin-top: 1rem; }
+
+/* The top bar stays visible while scrolling; anchored sections stop below it. */
+.topo { position: sticky; top: 0; z-index: 10; background: var(--superficie); }
+[id] { scroll-margin-top: 5rem; }
