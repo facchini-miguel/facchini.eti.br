@@ -17,6 +17,7 @@ import qrcode
 import qrcode.image.svg
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from markupsafe import Markup, escape
 
 RAIZ = Path(__file__).parent
 SAIDA = RAIZ / "_site"
@@ -266,6 +267,18 @@ def marca_svg(nome, cor):
     return svg[: svg.index("<title>")] + svg[svg.index("</title>") + 8 :]
 
 
+def com_licenca(texto, sistema, idioma):
+    """The paragraph, escaped, with the system's license name as a bold link."""
+    licenca = sistema.get("licenca")
+    if not licenca:
+        return escape(texto)
+    nome = escape(licenca["nome"][idioma])
+    link = Markup('<strong><a href="{}" target="_blank" rel="noopener">{}</a></strong>').format(
+        licenca["url"], nome
+    )
+    return escape(texto).replace(nome, link)
+
+
 def main():
     dados = yaml.safe_load((RAIZ / "sistemas.yaml").read_text(encoding="utf-8"))
     for sistema in dados["sistemas"]:
@@ -277,6 +290,7 @@ def main():
     ambiente = Environment(
         loader=FileSystemLoader(RAIZ / "modelos"), autoescape=select_autoescape()
     )
+    ambiente.filters["com_licenca"] = com_licenca
     marcas = {nome: marca_svg(nome, cor) for nome, cor in MARCAS.items()}
     # Changes whenever the CSS or JavaScript changes, so browsers fetch the new files.
     resumo = hashlib.sha256()

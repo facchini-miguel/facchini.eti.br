@@ -62,6 +62,10 @@ sistemas:
         en: Access roles, audit log and Brazilian data protection (LGPD) rules
         es: Perfiles de acceso, auditoría y reglas de la ley brasileña de protección de datos (LGPD)
     tecnologias: [Python, Django, PostgreSQL, HTMX, Bootstrap, Docker]
+    # Where the description names the license, it becomes a bold link to it.
+    licenca:
+      nome: {pt: Licença Apache 2.0, en: Apache License 2.0, es: Licencia Apache 2.0}
+      url: https://github.com/facchini-miguel/kaladrius/blob/main/LICENSE
     links:
       demo: https://kaladrius.facchini.eti.br
       documentacao: https://kaladrius-docs.facchini.eti.br
