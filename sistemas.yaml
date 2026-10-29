@@ -169,14 +169,14 @@ sobre:
   foto: imagens/youtube/canal.jpg
   texto:
     pt:
-      - Sou o Miguel. Estou na frente de um computador desde a década de 80, trabalho há mais de 20 anos com tecnologia e hoje atuo como DevOps.
-      - Aqui ficam os sistemas de código aberto que eu desenvolvo, como o Kaladrius, e o meu canal no YouTube, onde ensino Linux e DevOps.
+      - "Sou o Miguel Facchini. Comecei a mexer em computador nos anos 80 e trabalho com tecnologia há mais de 20 anos. Hoje atuo como DevOps: automatizo, monto e cuido da infraestrutura que mantém os sistemas no ar."
+      - Aqui estão os sistemas de código aberto que eu desenvolvo, como o Kaladrius, gratuitos para qualquer pessoa usar. E no canal 404 DevOps Not Found, no YouTube, eu ensino Linux e DevOps na prática, com o passo a passo e o código disponível.
     es:
-      - Soy Miguel. Estoy frente a una computadora desde los años 80, trabajo hace más de 20 años en tecnología y hoy me dedico a DevOps.
-      - Aquí están los sistemas de código abierto que desarrollo, como Kaladrius, y mi canal de YouTube, donde enseño Linux y DevOps.
+      - "Soy Miguel Facchini. Empecé con las computadoras en los años 80 y trabajo en tecnología hace más de 20 años. Hoy me dedico a DevOps: automatizo, armo y cuido la infraestructura que mantiene los sistemas en funcionamiento."
+      - Aquí están los sistemas de código abierto que desarrollo, como Kaladrius, gratuitos para que cualquier persona los use. Y en el canal 404 DevOps Not Found, en YouTube, enseño Linux y DevOps en la práctica, paso a paso y con el código disponible.
     en:
-      - I'm Miguel. I've been in front of a computer since the 1980s, I've worked in technology for more than 20 years, and today I work as a DevOps engineer.
-      - Here are the open-source systems I build, such as Kaladrius, and my YouTube channel, where I teach Linux and DevOps.
+      - "I'm Miguel Facchini. I started with computers in the 1980s and have worked in technology for more than 20 years. Today I'm a DevOps engineer: I automate, build and look after the infrastructure that keeps systems running."
+      - Here are the open-source systems I build, such as Kaladrius, free for anyone to use. And on my YouTube channel, 404 DevOps Not Found, I teach hands-on Linux and DevOps, step by step and with the code available.
   linkedin: https://www.linkedin.com/in/miguelfacchini
   canal:
     nome: 404 DevOps Not Found
