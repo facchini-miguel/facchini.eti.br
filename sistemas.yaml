@@ -169,13 +169,13 @@ sobre:
   foto: imagens/youtube/canal.jpg
   texto:
     pt:
-      - "Sou o Miguel Facchini. Trabalho com computadores desde os anos 80 e com tecnologia há mais de 20 anos. Hoje atuo como DevOps, automatizando e mantendo a infraestrutura que sustenta os sistemas em produção."
+      - "Sou o Miguel Facchini. Estudo informática desde os anos 80 e trabalho com tecnologia há mais de 20 anos. Hoje atuo como DevOps, automatizando e mantendo a infraestrutura que sustenta os sistemas em produção."
       - Aqui estão os sistemas de código aberto que eu desenvolvo, como o Kaladrius, gratuitos para qualquer pessoa usar. E no canal 404 DevOps Not Found, no YouTube, eu ensino Linux e DevOps na prática, com o passo a passo e o código disponível.
     es:
-      - "Soy Miguel Facchini. Trabajo con computadoras desde los años 80 y en tecnología hace más de 20 años. Hoy me dedico a DevOps, automatizando y manteniendo la infraestructura que sostiene los sistemas en producción."
+      - "Soy Miguel Facchini. Estudio informática desde los años 80 y trabajo en tecnología hace más de 20 años. Hoy me dedico a DevOps, automatizando y manteniendo la infraestructura que sostiene los sistemas en producción."
       - Aquí están los sistemas de código abierto que desarrollo, como Kaladrius, gratuitos para que cualquier persona los use. Y en el canal 404 DevOps Not Found, en YouTube, enseño Linux y DevOps en la práctica, paso a paso y con el código disponible.
     en:
-      - "I'm Miguel Facchini. I've worked with computers since the 1980s and in technology for more than 20 years. Today I'm a DevOps engineer, automating and maintaining the infrastructure that keeps systems running in production."
+      - "I'm Miguel Facchini. I've been studying computing since the 1980s and have worked in technology for more than 20 years. Today I'm a DevOps engineer, automating and maintaining the infrastructure that keeps systems running in production."
       - Here are the open-source systems I build, such as Kaladrius, free for anyone to use. And on my YouTube channel, 404 DevOps Not Found, I teach hands-on Linux and DevOps, step by step and with the code available.
   linkedin: https://www.linkedin.com/in/miguelfacchini
   canal:
