@@ -160,3 +160,7 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 .topo { position: sticky; top: 0; z-index: 10; background: var(--superficie); }
 [id] { scroll-margin-top: 5rem; }
 .perfil-tela { cursor: zoom-in; display: block; }
+
+/* Copy buttons in the Pix card. */
+.botao.copiar { align-self: flex-start; margin: .35rem 0 .6rem; font: inherit; cursor: pointer; }
+.botao.copiar.copiado { background: #198754; border-color: #198754; color: #fff; }

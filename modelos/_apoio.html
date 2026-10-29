@@ -11,9 +11,11 @@
         <div class="pix-qr" role="img" aria-label="{{ t.pix_qr }}">{{ apoio.pix_qr|safe }}</div>
         <span class="secundario">{{ t.pix_qr }}</span>
         <span class="secundario">{{ t.pix_chave }}</span>
-        <code class="chave">{{ apoio.pix }}</code>
+        <code class="chave" id="pix-chave">{{ apoio.pix }}</code>
+        <button type="button" class="botao copiar" data-copiar="pix-chave" data-copiado="{{ t.copiado }}">{{ t.copiar_chave }}</button>
         <span class="secundario">{{ t.pix_copia }}</span>
-        <code class="chave codigo-pix">{{ apoio.pix_codigo }}</code>
+        <code class="chave codigo-pix" id="pix-codigo">{{ apoio.pix_codigo }}</code>
+        <button type="button" class="botao principal copiar" data-copiar="pix-codigo" data-copiado="{{ t.copiado }}">{{ t.copiar_codigo }}</button>
       </div>
       {% endif %}
       {% if apoio.github_sponsors %}
