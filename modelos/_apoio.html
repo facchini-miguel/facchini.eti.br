@@ -17,10 +17,10 @@
       </div>
       {% endif %}
       {% if apoio.github_sponsors %}
-      <a class="apoio-opcao" href="{{ apoio.github_sponsors }}"><strong>{{ t.sponsors }}</strong><span class="secundario">github.com/sponsors</span></a>
+      <a class="apoio-opcao" href="{{ apoio.github_sponsors }}" target="_blank" rel="noopener"><strong>{{ t.sponsors }}</strong><span class="secundario">github.com/sponsors</span></a>
       {% endif %}
       {% if apoio.kofi %}
-      <a class="apoio-opcao" href="{{ apoio.kofi }}"><strong>{{ t.kofi }}</strong><span class="secundario">ko-fi.com</span></a>
+      <a class="apoio-opcao" href="{{ apoio.kofi }}" target="_blank" rel="noopener"><strong>{{ t.kofi }}</strong><span class="secundario">ko-fi.com</span></a>
       {% endif %}
     </div>
     {% else %}

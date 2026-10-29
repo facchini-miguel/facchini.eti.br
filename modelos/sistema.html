@@ -17,11 +17,11 @@
     <p class="chamada">{{ sistema.resumo[idioma] }}</p>
     {% set links = sistema.links %}
     <div class="acoes">
-      {% if links.demo %}<a class="botao principal" href="{{ links.demo }}">{{ t.demo }}</a>{% endif %}
-      {% if links.documentacao %}<a class="botao" href="{{ links.documentacao }}">{{ t.documentacao }}</a>{% endif %}
-      {% if links.github %}<a class="botao" href="{{ links.github }}">{{ t.codigo }}</a>{% endif %}
-      {% if links.versoes %}<a class="botao" href="{{ links.versoes }}">{{ t.versoes }}</a>{% endif %}
-      {% if links.app %}<a class="botao" href="{{ links.app }}">{{ t.app }}</a>{% else %}<span class="botao inativo">{{ t.app_em_breve }}</span>{% endif %}
+      {% if links.demo %}<a class="botao principal" href="{{ links.demo }}" target="_blank" rel="noopener">{{ t.demo }}</a>{% endif %}
+      {% if links.documentacao %}<a class="botao" href="{{ links.documentacao }}" target="_blank" rel="noopener">{{ t.documentacao }}</a>{% endif %}
+      {% if links.github %}<a class="botao" href="{{ links.github }}" target="_blank" rel="noopener">{{ t.codigo }}</a>{% endif %}
+      {% if links.versoes %}<a class="botao" href="{{ links.versoes }}" target="_blank" rel="noopener">{{ t.versoes }}</a>{% endif %}
+      {% if links.app %}<a class="botao" href="{{ links.app }}" target="_blank" rel="noopener">{{ t.app }}</a>{% else %}<span class="botao inativo">{{ t.app_em_breve }}</span>{% endif %}
     </div>
   </div>
 </section>
