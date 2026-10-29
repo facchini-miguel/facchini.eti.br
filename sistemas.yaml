@@ -49,7 +49,7 @@ sistemas:
         en: Access roles, audit log and Brazilian data protection (LGPD) rules
     tecnologias: [Python, Django, PostgreSQL, HTMX, Bootstrap, Docker]
     links:
-      demo: https://kaladrius.duckdns.org
+      demo: https://kaladrius.facchini.eti.br
       documentacao: https://docs.kaladrius.duckdns.org
       github: https://github.com/facchini-miguel/kaladrius
       versoes: https://github.com/facchini-miguel/kaladrius/releases
