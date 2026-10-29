@@ -181,10 +181,23 @@ sistemas:
           - {pt: "Auditoria e pacientes arquivados", en: "Audit log and archived patients", es: "Auditoría y pacientes archivados"}
         nao_pode:
           - {pt: "Abrir o prontuário, a menos que também esteja cadastrado como profissional", en: "Open the medical record, unless also registered as a practitioner", es: "Abrir la historia clínica, salvo que también esté registrado como profesional"}
+      - nome: {pt: Administrador do sistema, en: System administrator, es: Administrador del sistema}
+        destaque: true
+        tela: imagens/kaladrius/saude.png
+        resumo:
+          pt: Quem instala e mantém o Kaladrius, como a equipe de TI. Está acima de todos os perfis e não tem conta pública na demonstração.
+          en: Whoever installs and runs Kaladrius, such as the IT team. Sits above every role and has no public login in the demo.
+          es: Quien instala y mantiene Kaladrius, como el equipo de TI. Está por encima de todos los perfiles y no tiene cuenta pública en la demostración.
+        pode:
+          - {pt: "Tudo o que os outros perfis fazem, em todas as clínicas da instalação", en: "Everything the other roles do, in every clinic of the installation", es: "Todo lo que hacen los otros perfiles, en todas las clínicas de la instalación"}
+          - {pt: "Prontuário completo: registra atendimentos em nome de um profissional, e a auditoria guarda quem fez", en: "The full medical record: writes visits on behalf of a practitioner, and the audit log keeps who did it", es: "La historia clínica completa: registra consultas en nombre de un profesional, y la auditoría guarda quién lo hizo"}
+          - {pt: "Saúde do servidor: processador, memória, disco, rede e backups", en: "Server health: processor, memory, disk, network and backups", es: "Salud del servidor: procesador, memoria, disco, red y respaldos"}
+          - {pt: "Painel técnico, documentação técnica e avisos de backup", en: "Technical admin panel, technical documentation and backup warnings", es: "Panel técnico, documentación técnica y avisos de respaldo"}
+        nao_pode: []
     perfis_nota:
-      pt: O que um perfil não pode usar nem aparece na tela, e o servidor confere cada ação. Ninguém muda o próprio perfil, e a clínica sempre tem um administrador ativo. Acima de todos, o administrador do sistema pode tudo, inclusive o prontuário, e a auditoria registra o que ele faz.
-      en: What a role cannot use does not even show on screen, and the server checks every action. Nobody changes their own role, and the clinic always has an active administrator. Above them all, the system administrator can do everything, the medical record included, and the audit log records what they do.
-      es: Lo que un perfil no puede usar ni siquiera aparece en pantalla, y el servidor verifica cada acción. Nadie cambia su propio perfil, y la clínica siempre tiene un administrador activo. Por encima de todos, el administrador del sistema puede todo, incluida la historia clínica, y la auditoría registra lo que hace.
+      pt: O que um perfil não pode usar nem aparece na tela, e o servidor confere cada ação. Ninguém muda o próprio perfil, e a clínica sempre tem um administrador ativo.
+      en: What a role cannot use does not even show on screen, and the server checks every action. Nobody changes their own role, and the clinic always has an active administrator.
+      es: Lo que un perfil no puede usar ni siquiera aparece en pantalla, y el servidor verifica cada acción. Nadie cambia su propio perfil, y la clínica siempre tiene un administrador activo.
 
 # The "About" page: the owner and his YouTube channel.
 sobre:

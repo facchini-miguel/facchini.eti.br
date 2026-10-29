@@ -220,3 +220,10 @@ h2.com-icone .marca-icone { width: 1.1em; height: 1.1em; }
 .destaques li { padding: .3rem .75rem; border-radius: 999px; background: var(--superficie); border: 1px solid var(--borda); font-size: .9rem; }
 .destaques li::before { content: "✓ "; color: #198754; font-weight: 700; }
 .sobre-abertura .chamada { max-width: none; font-size: 1.1rem; margin: 0 0 .75rem; }
+
+/* The system administrator: a full-width card, screen beside the text on wide screens. */
+.perfil-destaque { grid-column: 1 / -1; border-color: #6f42c1; }
+@media (min-width: 800px) {
+  .perfil-destaque { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 1.5rem; align-items: start; }
+  .perfil-destaque .perfil-texto h3 { margin-top: 0; }
+}
