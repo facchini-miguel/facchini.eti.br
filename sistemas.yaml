@@ -160,9 +160,9 @@ sistemas:
         nao_pode:
           - {pt: "Abrir o prontuário, a menos que também esteja cadastrado como profissional", en: "Open the medical record, unless also registered as a practitioner", es: "Abrir la historia clínica, salvo que también esté registrado como profesional"}
     perfis_nota:
-      pt: O que um perfil não pode usar nem aparece na tela, e o servidor confere cada ação. Ninguém muda o próprio perfil, e a clínica sempre tem um administrador ativo.
-      en: What a role cannot use does not even show on screen, and the server checks every action. Nobody changes their own role, and the clinic always has an active administrator.
-      es: Lo que un perfil no puede usar ni siquiera aparece en pantalla, y el servidor verifica cada acción. Nadie cambia su propio perfil, y la clínica siempre tiene un administrador activo.
+      pt: O que um perfil não pode usar nem aparece na tela, e o servidor confere cada ação. Ninguém muda o próprio perfil, e a clínica sempre tem um administrador ativo. Acima de todos, o administrador do sistema pode tudo, inclusive o prontuário, e a auditoria registra o que ele faz.
+      en: What a role cannot use does not even show on screen, and the server checks every action. Nobody changes their own role, and the clinic always has an active administrator. Above them all, the system administrator can do everything, the medical record included, and the audit log records what they do.
+      es: Lo que un perfil no puede usar ni siquiera aparece en pantalla, y el servidor verifica cada acción. Nadie cambia su propio perfil, y la clínica siempre tiene un administrador activo. Por encima de todos, el administrador del sistema puede todo, incluida la historia clínica, y la auditoría registra lo que hace.
 
 # The "About" page: the owner and his YouTube channel.
 sobre:
