@@ -6,6 +6,7 @@ www.facchini.eti.br and in the GitHub Pages preview address alike.
     pip install -r requirements.txt && python construir.py
 """
 
+import hashlib
 import json
 import shutil
 import urllib.request
@@ -186,7 +187,8 @@ def qr_svg(texto):
 
 def marca_svg(nome, cor):
     svg = (RAIZ / "estatico" / "imagens" / "marcas" / f"{nome}.svg").read_text(encoding="utf-8")
-    svg = svg.replace('role="img" ', 'aria-hidden="true" class="marca-icone" ')
+    # The size is also on the tag, so an old cached stylesheet never blows it up.
+    svg = svg.replace('role="img" ', 'aria-hidden="true" class="marca-icone" width="18" height="18" ')
     svg = svg.replace("<path ", f'<path fill="{cor}" ', 1)
     return svg[: svg.index("<title>")] + svg[svg.index("</title>") + 8 :]
 
@@ -203,6 +205,12 @@ def main():
         loader=FileSystemLoader(RAIZ / "modelos"), autoescape=select_autoescape()
     )
     marcas = {nome: marca_svg(nome, cor) for nome, cor in MARCAS.items()}
+    # Changes whenever the CSS or JavaScript changes, so browsers fetch the new files.
+    resumo = hashlib.sha256()
+    for arquivo in sorted((RAIZ / "estatico").glob("*/*.*")):
+        if arquivo.suffix in (".css", ".js"):
+            resumo.update(arquivo.read_bytes())
+    versao_arquivos = resumo.hexdigest()[:10]
     if SAIDA.exists():
         shutil.rmtree(SAIDA)
     shutil.copytree(RAIZ / "estatico", SAIDA)
@@ -223,6 +231,7 @@ def main():
                 raiz=raiz,
                 prefixo=pasta,
                 marcas=marcas,
+                versao_arquivos=versao_arquivos,
                 # The same page in each language, for the flags in the header.
                 idiomas=[
                     {

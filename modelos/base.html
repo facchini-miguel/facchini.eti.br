@@ -6,7 +6,7 @@
   <title>{% block titulo %}{{ site.titulo }}{% endblock %}</title>
   <meta name="description" content="{% block descricao %}{{ t.chamada }}{% endblock %}">
   <link rel="icon" href="{{ raiz }}imagens/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ raiz }}css/site.css">
+  <link rel="stylesheet" href="{{ raiz }}css/site.css?v={{ versao_arquivos }}">
 </head>
 <body>
   <header class="topo">
