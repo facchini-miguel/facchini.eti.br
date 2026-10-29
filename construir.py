@@ -1,6 +1,6 @@
 """Builds the website into _site/ from sistemas.yaml and the templates in modelos/.
 
-Portuguese at the root, English under /en/. Every link is relative, so the site works at
+Portuguese at the root, Spanish under /es/ and English under /en/. Every link is relative, so the site works at
 www.facchini.eti.br and in the GitHub Pages preview address alike.
 
     pip install -r requirements.txt && python construir.py
@@ -18,7 +18,9 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 RAIZ = Path(__file__).parent
 SAIDA = RAIZ / "_site"
-IDIOMAS = {"pt": "", "en": "en/"}
+IDIOMAS = {"pt": "", "es": "es/", "en": "en/"}
+# Brand icons from Simple Icons (CC0), drawn inline in these colors.
+MARCAS = {"github": "currentColor", "kofi": "#FF5E5B", "pix": "#32BCAD"}
 
 TEXTOS = {
     "pt": {
@@ -45,14 +47,55 @@ TEXTOS = {
         "pix_copia": "Pix copia e cola",
         "sponsors": "GitHub Sponsors",
         "kofi": "Ko-fi",
+        "sponsors_texto": "Apoio mensal ou único, com cartão, pelo GitHub.",
+        "sponsors_botao": "Patrocinar",
+        "kofi_texto": "Uma doação única, com cartão ou PayPal.",
+        "kofi_botao": "Pagar um café",
         "voltar": "Todos os sistemas",
         "rodape": "Código aberto, feito no Brasil.",
-        "outro_idioma": "English",
+        "nome_idioma": "Português",
         "dados_ficticios": "As telas mostram apenas dados fictícios.",
         "dica_galeria": "Clique numa tela para ampliar; as setas do teclado ou a roda do mouse passam para a próxima.",
         "anterior": "Tela anterior",
         "proxima": "Próxima tela",
         "fechar": "Fechar",
+    },
+    "es": {
+        "lang": "es",
+        "chamada": "Sistemas de código abierto, gratuitos, para el día a día de quien trabaja.",
+        "sistemas": "Sistemas",
+        "apoiar": "Apoyar",
+        "versao": "versión",
+        "demo": "Demostración",
+        "documentacao": "Documentación",
+        "codigo": "Código en GitHub",
+        "versoes": "Novedades",
+        "app": "Aplicación",
+        "app_em_breve": "Aplicación: próximamente",
+        "saiba_mais": "Saber más",
+        "recursos": "Qué hace",
+        "telas": "Pantallas",
+        "tecnologias": "Hecho con",
+        "apoio_texto": "Los sistemas son gratuitos. Si le ayudan, considere apoyar su desarrollo.",
+        "apoio_em_breve": "Las formas de apoyo están llegando.",
+        "pix": "Pix (Brasil)",
+        "pix_chave": "Clave Pix",
+        "pix_qr": "Escanee con una aplicación bancaria brasileña",
+        "pix_copia": "Pix copiar y pegar",
+        "sponsors": "GitHub Sponsors",
+        "kofi": "Ko-fi",
+        "sponsors_texto": "Apoyo mensual o único, con tarjeta, a través de GitHub.",
+        "sponsors_botao": "Patrocinar",
+        "kofi_texto": "Una donación única, con tarjeta o PayPal.",
+        "kofi_botao": "Invitar un café",
+        "voltar": "Todos los sistemas",
+        "rodape": "Código abierto, hecho en Brasil.",
+        "nome_idioma": "Español",
+        "dados_ficticios": "Las pantallas muestran solo datos ficticios.",
+        "dica_galeria": "Haga clic en una pantalla para ampliarla; las flechas del teclado o la rueda del ratón pasan a la siguiente.",
+        "anterior": "Pantalla anterior",
+        "proxima": "Pantalla siguiente",
+        "fechar": "Cerrar",
     },
     "en": {
         "lang": "en",
@@ -78,9 +121,13 @@ TEXTOS = {
         "pix_copia": "Pix copy and paste",
         "sponsors": "GitHub Sponsors",
         "kofi": "Ko-fi",
+        "sponsors_texto": "Monthly or one-time support, by card, through GitHub.",
+        "sponsors_botao": "Sponsor",
+        "kofi_texto": "A one-time donation, by card or PayPal.",
+        "kofi_botao": "Buy me a coffee",
         "voltar": "All systems",
         "rodape": "Open source, made in Brazil.",
-        "outro_idioma": "Português",
+        "nome_idioma": "English",
         "dados_ficticios": "The screens show fake data only.",
         "dica_galeria": "Click a screen to enlarge it; the arrow keys or the mouse wheel move to the next one.",
         "anterior": "Previous screen",
@@ -137,6 +184,13 @@ def qr_svg(texto):
     return imagem.to_string(encoding="unicode")
 
 
+def marca_svg(nome, cor):
+    svg = (RAIZ / "estatico" / "imagens" / "marcas" / f"{nome}.svg").read_text(encoding="utf-8")
+    svg = svg.replace('role="img" ', 'aria-hidden="true" class="marca-icone" ')
+    svg = svg.replace("<path ", f'<path fill="{cor}" ', 1)
+    return svg[: svg.index("<title>")] + svg[svg.index("</title>") + 8 :]
+
+
 def main():
     dados = yaml.safe_load((RAIZ / "sistemas.yaml").read_text(encoding="utf-8"))
     for sistema in dados["sistemas"]:
@@ -148,11 +202,11 @@ def main():
     ambiente = Environment(
         loader=FileSystemLoader(RAIZ / "modelos"), autoescape=select_autoescape()
     )
+    marcas = {nome: marca_svg(nome, cor) for nome, cor in MARCAS.items()}
     if SAIDA.exists():
         shutil.rmtree(SAIDA)
     shutil.copytree(RAIZ / "estatico", SAIDA)
     for idioma, pasta in IDIOMAS.items():
-        outro = "en" if idioma == "pt" else "pt"
         paginas = [("index.html", "inicio.html", None)] + [
             (f"{s['id']}/index.html", "sistema.html", s) for s in dados["sistemas"]
         ]
@@ -167,8 +221,18 @@ def main():
                 idioma=idioma,
                 t=TEXTOS[idioma],
                 raiz=raiz,
-                # The same page in the other language.
-                outro_idioma=raiz + IDIOMAS[outro] + destino.removesuffix("index.html"),
+                prefixo=pasta,
+                marcas=marcas,
+                # The same page in each language, for the flags in the header.
+                idiomas=[
+                    {
+                        "codigo": codigo,
+                        "lang": TEXTOS[codigo]["lang"],
+                        "nome": TEXTOS[codigo]["nome_idioma"],
+                        "url": raiz + IDIOMAS[codigo] + destino.removesuffix("index.html"),
+                    }
+                    for codigo in IDIOMAS
+                ],
             )
             arquivo = SAIDA / caminho
             arquivo.parent.mkdir(parents=True, exist_ok=True)

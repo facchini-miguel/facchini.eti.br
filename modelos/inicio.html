@@ -12,7 +12,7 @@
   <h2>{{ t.sistemas }}</h2>
   <div class="grade">
     {% for sistema in sistemas %}
-    <a class="cartao" href="{{ raiz }}{% if idioma == 'en' %}en/{% endif %}{{ sistema.id }}/">
+    <a class="cartao" href="{{ raiz }}{{ prefixo }}{{ sistema.id }}/">
       <div class="cartao-topo">
         <img src="{{ raiz }}{{ sistema.logo }}" alt="" width="48" height="48">
         <div>

@@ -6,7 +6,7 @@
 {% block conteudo %}
 <section class="abertura abertura-sistema">
   <div class="largura">
-    <a class="voltar" href="{{ raiz }}{% if idioma == 'en' %}en/{% endif %}">← {{ t.voltar }}</a>
+    <a class="voltar" href="{{ raiz }}{{ prefixo }}">← {{ t.voltar }}</a>
     <div class="sistema-titulo">
       <img src="{{ raiz }}{{ sistema.logo }}" alt="" width="72" height="72">
       <div>

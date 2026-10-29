@@ -93,9 +93,9 @@ h2 { font-size: 1.5rem; margin-top: 2.5rem; }
 
 .apoio { margin-top: 3.5rem; padding: 2.5rem 0; background: var(--superficie); border-top: 1px solid var(--borda); }
 .apoio h2 { margin-top: 0; }
-.apoio-opcoes { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+.apoio-opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1rem; }
 .apoio-opcao {
-  display: flex; flex-direction: column; gap: .2rem; min-width: 14rem;
+  display: flex; flex-direction: column; gap: .2rem;
   border: 1px solid var(--borda); border-radius: 12px; padding: 1rem; color: var(--texto); text-decoration: none;
 }
 a.apoio-opcao:hover { border-color: var(--destaque); }
@@ -104,7 +104,6 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 .rodape { padding: 1.5rem 0 2.5rem; color: var(--secundario); font-size: .9rem; }
 .rodape .largura { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; }
 
-.apoio-pix { max-width: 22rem; }
 /* The QR code stays black on white in both themes, so bank apps read it. */
 .pix-qr { background: #fff; border-radius: 8px; padding: .5rem; width: 12rem; }
 .pix-qr svg { display: block; width: 100%; height: auto; }
@@ -129,3 +128,18 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 @media (max-width: 640px) {
   .galeria-seta { top: auto; bottom: 1rem; transform: none; }
 }
+
+/* Language flags in the header; the current language stands out. */
+.idiomas { display: inline-flex; gap: .35rem; align-items: center; }
+.idiomas a { display: inline-flex; padding: 2px; border-radius: 4px; opacity: .55; border: 1px solid transparent; }
+.idiomas a:hover, .idiomas a[aria-current] { opacity: 1; }
+.idiomas a[aria-current] { border-color: var(--borda); }
+.idiomas img { display: block; border-radius: 2px; }
+/* Brand icons (GitHub, Ko-fi, Pix) next to their names. */
+.com-icone { display: inline-flex; align-items: center; gap: .45rem; }
+.marca-icone { width: 1.15em; height: 1.15em; flex: none; }
+
+/* GitHub Sponsors and Ko-fi cards: a large logo and a call to action. */
+.apoio-logo { display: flex; justify-content: center; padding: 1.25rem 0 .5rem; }
+.apoio-logo .marca-icone { width: 5.5rem; height: 5.5rem; }
+.apoio-opcao .botao { margin-top: auto; align-self: flex-start; }

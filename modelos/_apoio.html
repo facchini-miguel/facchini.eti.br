@@ -7,7 +7,7 @@
     <div class="apoio-opcoes">
       {% if apoio.pix %}
       <div class="apoio-opcao apoio-pix">
-        <strong>{{ t.pix }}</strong>
+        <strong class="com-icone">{{ marcas.pix|safe }}{{ t.pix }}</strong>
         <div class="pix-qr" role="img" aria-label="{{ t.pix_qr }}">{{ apoio.pix_qr|safe }}</div>
         <span class="secundario">{{ t.pix_qr }}</span>
         <span class="secundario">{{ t.pix_chave }}</span>
@@ -17,10 +17,10 @@
       </div>
       {% endif %}
       {% if apoio.github_sponsors %}
-      <a class="apoio-opcao" href="{{ apoio.github_sponsors }}" target="_blank" rel="noopener"><strong>{{ t.sponsors }}</strong><span class="secundario">github.com/sponsors</span></a>
+      <a class="apoio-opcao" href="{{ apoio.github_sponsors }}" target="_blank" rel="noopener"><strong class="com-icone">{{ marcas.github|safe }}{{ t.sponsors }}</strong><span class="apoio-logo">{{ marcas.github|safe }}</span><span class="secundario">{{ t.sponsors_texto }}</span><span class="botao principal">{{ t.sponsors_botao }}</span></a>
       {% endif %}
       {% if apoio.kofi %}
-      <a class="apoio-opcao" href="{{ apoio.kofi }}" target="_blank" rel="noopener"><strong>{{ t.kofi }}</strong><span class="secundario">ko-fi.com</span></a>
+      <a class="apoio-opcao" href="{{ apoio.kofi }}" target="_blank" rel="noopener"><strong class="com-icone">{{ marcas.kofi|safe }}{{ t.kofi }}</strong><span class="apoio-logo">{{ marcas.kofi|safe }}</span><span class="secundario">{{ t.kofi_texto }}</span><span class="botao principal">{{ t.kofi_botao }}</span></a>
       {% endif %}
     </div>
     {% else %}

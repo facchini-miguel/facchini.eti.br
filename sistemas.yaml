@@ -1,5 +1,5 @@
 # Everything the website shows. To add a system, add one item to "sistemas".
-# Texts have a Portuguese (pt) and an English (en) version. A link left empty is hidden.
+# Texts have a Portuguese (pt), a Spanish (es) and an English (en) version. A link left empty is hidden.
 
 site:
   titulo: Miguel Facchini
@@ -22,9 +22,11 @@ sistemas:
     situacao:
       pt: Em desenvolvimento, em uso de demonstração
       en: In development, running as a demo
+      es: En desarrollo, funcionando como demostración
     resumo:
       pt: Gestão de clínicas de saúde, de código aberto. Agenda, pacientes, prontuário, orçamentos, rechamadas e financeiro num só sistema web.
       en: Open-source management for health clinics. Schedule, patients, medical record, estimates, recalls and finance in one web app.
+      es: Gestión de clínicas de salud, de código abierto. Agenda, pacientes, historia clínica, presupuestos, recordatorios y finanzas en un solo sistema web.
     descricao:
       pt:
         - O Kaladrius é um sistema web para clínicas odontológicas, médicas e de outras áreas da saúde. Funciona em qualquer navegador, no computador ou no celular, e cada clínica pode instalar no próprio servidor.
@@ -34,19 +36,29 @@ sistemas:
         - Kaladrius is a web app for dental, medical and other health clinics. It runs in any browser, on a computer or a phone, and each clinic can install it on its own server.
         - The name comes from the caladrius, the white bird of medieval legends that cures the sick by looking at them.
         - It is free and open source, under the Apache License 2.0, and available in Portuguese, English and Spanish.
+      es:
+        - Kaladrius es un sistema web para clínicas odontológicas, médicas y de otras áreas de la salud. Funciona en cualquier navegador, en la computadora o en el celular, y cada clínica puede instalarlo en su propio servidor.
+        - El nombre viene del caladrius, el ave blanca de las leyendas medievales que cura a los enfermos con la mirada.
+        - Es gratuito y de código abierto, bajo la Licencia Apache 2.0, y está en portugués, inglés y español.
     recursos:
       - pt: Agenda por profissional, com presença, faltas e horários bloqueados
         en: Schedule per practitioner, with attendance, no-shows and blocked times
+        es: Agenda por profesional, con asistencia, ausencias y horarios bloqueados
       - pt: Cadastro de pacientes, aniversariantes e rechamadas de retorno
         en: Patient records, birthdays and follow-up recalls
+        es: Registro de pacientes, cumpleaños y recordatorios de control
       - pt: Prontuário com anamnese, atestados, receitas, pedidos de exames e anexos
         en: Medical record with anamnesis, certificates, prescriptions, exam requests and attachments
+        es: Historia clínica con anamnesis, certificados, recetas, solicitudes de exámenes y adjuntos
       - pt: Orçamentos com tabela de procedimentos e odontograma
         en: Estimates with a procedure price list and dental chart
+        es: Presupuestos con tabla de procedimientos y odontograma
       - pt: Financeiro com caixa do dia, contas a receber e a pagar, comissões e extrato bancário
         en: Finance with the daily cash, receivables and payables, commissions and bank statements
+        es: Finanzas con la caja del día, cuentas por cobrar y por pagar, comisiones y extracto bancario
       - pt: Perfis de acesso, auditoria e regras da LGPD
         en: Access roles, audit log and Brazilian data protection (LGPD) rules
+        es: Perfiles de acceso, auditoría y reglas de la ley brasileña de protección de datos (LGPD)
     tecnologias: [Python, Django, PostgreSQL, HTMX, Bootstrap, Docker]
     links:
       demo: https://kaladrius.facchini.eti.br
@@ -56,16 +68,16 @@ sistemas:
       app: ""
     telas:
       - arquivo: imagens/kaladrius/inicio.png
-        legenda: {pt: Resumo do dia na tela de início, en: Summary of the day on the home page}
+        legenda: {pt: Resumo do dia na tela de início, en: Summary of the day on the home page, es: Resumen del día en la pantalla de inicio}
       - arquivo: imagens/kaladrius/agenda.png
-        legenda: {pt: Agenda da semana por profissional, en: Weekly schedule per practitioner}
+        legenda: {pt: Agenda da semana por profissional, en: Weekly schedule per practitioner, es: Agenda semanal por profesional}
       - arquivo: imagens/kaladrius/prontuario.png
-        legenda: {pt: Atendimento no prontuário, en: A visit in the medical record}
+        legenda: {pt: Atendimento no prontuário, en: A visit in the medical record, es: Consulta en la historia clínica}
       - arquivo: imagens/kaladrius/orcamento.png
-        legenda: {pt: Orçamento com odontograma, en: Estimate with the dental chart}
+        legenda: {pt: Orçamento com odontograma, en: Estimate with the dental chart, es: Presupuesto con odontograma}
       - arquivo: imagens/kaladrius/fluxo-de-caixa.png
-        legenda: {pt: Fluxo de caixa, en: Cash flow}
+        legenda: {pt: Fluxo de caixa, en: Cash flow, es: Flujo de caja}
       - arquivo: imagens/kaladrius/ficha.png
-        legenda: {pt: Ficha do paciente, en: Patient record}
+        legenda: {pt: Ficha do paciente, en: Patient record, es: Ficha del paciente}
       - arquivo: imagens/kaladrius/pacientes.png
-        legenda: {pt: Lista de pacientes, en: Patient list}
+        legenda: {pt: Lista de pacientes, en: Patient list, es: Lista de pacientes}
