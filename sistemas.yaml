@@ -81,3 +81,73 @@ sistemas:
         legenda: {pt: Ficha do paciente, en: Patient record, es: Ficha del paciente}
       - arquivo: imagens/kaladrius/pacientes.png
         legenda: {pt: Lista de pacientes, en: Patient list, es: Lista de pacientes}
+      - arquivo: imagens/kaladrius/rechamadas.png
+        legenda: {pt: Rechamadas de retorno, en: Follow-up recalls, es: Recordatorios de control}
+      - arquivo: imagens/kaladrius/aniversariantes.png
+        legenda: {pt: Aniversariantes, en: Birthdays, es: Cumpleaños}
+      - arquivo: imagens/kaladrius/contas-a-receber.png
+        legenda: {pt: Contas a receber, en: Receivables, es: Cuentas por cobrar}
+      - arquivo: imagens/kaladrius/contas-a-pagar.png
+        legenda: {pt: Contas a pagar, en: Payables, es: Cuentas por pagar}
+      - arquivo: imagens/kaladrius/relatorios.png
+        legenda: {pt: Relatórios financeiros, en: Financial reports, es: Informes financieros}
+      - arquivo: imagens/kaladrius/equipe.png
+        legenda: {pt: Equipe e perfis de acesso, en: Team and access roles, es: Equipo y perfiles de acceso}
+      - arquivo: imagens/kaladrius/auditoria.png
+        legenda: {pt: Auditoria de quem fez o quê, en: Audit log of who did what, es: Auditoría de quién hizo qué}
+      - arquivo: imagens/kaladrius/novidades.png
+        legenda: {pt: Novidades de cada versão, en: What's new in each version, es: Novedades de cada versión}
+      - arquivo: imagens/kaladrius/login.png
+        legenda: {pt: Tela de entrada, en: Sign-in page, es: Pantalla de acceso}
+    # Access roles: each login sees and does only what its role allows.
+    perfis:
+      - nome: {pt: Recepção, en: Front desk, es: Recepción}
+        tela: imagens/kaladrius/perfil-recepcao.png
+        resumo:
+          pt: Atende, agenda e recebe. Vê a agenda de todos os profissionais.
+          en: Greets, schedules and takes payments. Sees every practitioner's schedule.
+          es: Atiende, agenda y cobra. Ve la agenda de todos los profesionales.
+        pode:
+          - {pt: "Agenda de todos os profissionais: marcar, remarcar, desmarcar e registrar presença", en: "Every practitioner's schedule: book, move, cancel and mark attendance", es: "Agenda de todos los profesionales: agendar, cambiar, cancelar y marcar asistencia"}
+          - {pt: Cadastrar e alterar pacientes, en: Add and edit patients, es: Registrar y modificar pacientes}
+          - {pt: Rechamadas e aniversariantes, en: Recalls and birthdays, es: Recordatorios y cumpleaños}
+          - {pt: Criar e alterar orçamentos, en: Create and edit estimates, es: Crear y modificar presupuestos}
+          - {pt: "Receber pagamentos, emitir recibos e ver devedores", en: "Take payments, issue receipts and see debtors", es: "Cobrar, emitir recibos y ver deudores"}
+        nao_pode:
+          - {pt: Abrir o prontuário, en: Open the medical record, es: Abrir la historia clínica}
+          - {pt: "Cancelar lançamentos, estornar pagamentos ou dar descontos", en: "Cancel entries, reverse payments or give discounts", es: "Anular asientos, revertir pagos o dar descuentos"}
+          - {pt: "Contas a pagar, fluxo de caixa e relatórios", en: "Payables, cash flow and reports", es: "Cuentas por pagar, flujo de caja e informes"}
+          - {pt: "Equipe, configurações da clínica e auditoria", en: "Team, clinic settings and audit log", es: "Equipo, configuración de la clínica y auditoría"}
+      - nome: {pt: Profissional, en: Practitioner, es: Profesional}
+        tela: imagens/kaladrius/perfil-profissional.png
+        resumo:
+          pt: Dentista, médico ou outro profissional de saúde. Vê só a própria agenda e é quem usa o prontuário.
+          en: A dentist, physician or other health professional. Sees only their own schedule and is the one who uses the medical record.
+          es: Odontólogo, médico u otro profesional de la salud. Ve solo su propia agenda y es quien usa la historia clínica.
+        pode:
+          - {pt: "A própria agenda: marcar, remarcar e registrar presença", en: "Their own schedule: book, move and mark attendance", es: "Su propia agenda: agendar, cambiar y marcar asistencia"}
+          - {pt: "Prontuário: anamnese, finalizar, adendos, atestados, receitas, pedidos de exames e anexos", en: "Medical record: anamnesis, finalizing, addenda, certificates, prescriptions, exam requests and attachments", es: "Historia clínica: anamnesis, finalizar, adendas, certificados, recetas, solicitudes de exámenes y adjuntos"}
+          - {pt: Cadastrar e alterar pacientes, en: Add and edit patients, es: Registrar y modificar pacientes}
+          - {pt: "Rechamadas, aniversariantes e orçamentos", en: "Recalls, birthdays and estimates", es: "Recordatorios, cumpleaños y presupuestos"}
+        nao_pode:
+          - {pt: A agenda dos outros profissionais, en: Other practitioners' schedules, es: La agenda de otros profesionales}
+          - {pt: "Financeiro: recebimentos, contas e relatórios", en: "Finance: payments, accounts and reports", es: "Finanzas: cobros, cuentas e informes"}
+          - {pt: "Equipe, configurações da clínica e auditoria", en: "Team, clinic settings and audit log", es: "Equipo, configuración de la clínica y auditoría"}
+      - nome: {pt: Administrador da clínica, en: Clinic administrator, es: Administrador de la clínica}
+        tela: imagens/kaladrius/perfil-admin.png
+        resumo:
+          pt: O dono ou gerente da clínica. Faz tudo e cuida da equipe.
+          en: The clinic's owner or manager. Does everything and manages the team.
+          es: El dueño o gerente de la clínica. Hace todo y administra el equipo.
+        pode:
+          - {pt: "Tudo o que a recepção faz, na agenda de todos", en: "Everything the front desk does, on everyone's schedule", es: "Todo lo que hace la recepción, en la agenda de todos"}
+          - {pt: "Equipe: criar logins, escolher o perfil, trocar senhas e desativar acessos", en: "Team: create logins, choose the role, reset passwords and disable access", es: "Equipo: crear usuarios, elegir el perfil, cambiar contraseñas y desactivar accesos"}
+          - {pt: "Financeiro completo: caixa, contas a pagar, fluxo de caixa, relatórios, comissões e extrato", en: "Full finance: cash desk, payables, cash flow, reports, commissions and bank statements", es: "Finanzas completas: caja, cuentas por pagar, flujo de caja, informes, comisiones y extracto"}
+          - {pt: "Profissionais, tabelas (tipos de atendimento, procedimentos) e configurações da clínica", en: "Practitioners, price and appointment-type lists, and clinic settings", es: "Profesionales, tablas (tipos de consulta, procedimientos) y configuración de la clínica"}
+          - {pt: "Auditoria e pacientes arquivados", en: "Audit log and archived patients", es: "Auditoría y pacientes archivados"}
+        nao_pode:
+          - {pt: "Abrir o prontuário, a menos que também esteja cadastrado como profissional", en: "Open the medical record, unless also registered as a practitioner", es: "Abrir la historia clínica, salvo que también esté registrado como profesional"}
+    perfis_nota:
+      pt: O que um perfil não pode usar nem aparece na tela, e o servidor confere cada ação. Ninguém muda o próprio perfil, e a clínica sempre tem um administrador ativo.
+      en: What a role cannot use does not even show on screen, and the server checks every action. Nobody changes their own role, and the clinic always has an active administrator.
+      es: Lo que un perfil no puede usar ni siquiera aparece en pantalla, y el servidor verifica cada acción. Nadie cambia su propio perfil, y la clínica siempre tiene un administrador activo.

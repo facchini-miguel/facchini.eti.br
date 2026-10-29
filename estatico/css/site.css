@@ -143,3 +143,15 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 .apoio-logo { display: flex; justify-content: center; padding: 1.25rem 0 .5rem; }
 .apoio-logo .marca-icone { width: 5.5rem; height: 5.5rem; }
 .apoio-opcao .botao { margin-top: auto; align-self: flex-start; }
+
+/* Access roles: one card per role, with its home screen and what it can and cannot do. */
+.perfis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.25rem; }
+.perfil { background: var(--superficie); border: 1px solid var(--borda); border-radius: 12px; padding: 1rem; box-shadow: var(--sombra); }
+.perfil-tela img { border-radius: 8px; border: 1px solid var(--borda); aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; width: 100%; }
+.perfil h3 { margin: .75rem 0 .25rem; }
+.perfil h4 { margin: .9rem 0 .3rem; font-size: .9rem; text-transform: uppercase; letter-spacing: .03em; color: var(--secundario); }
+.perfil ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .3rem; }
+.perfil li { padding-left: 1.4rem; position: relative; }
+.lista-pode li::before { content: "✓"; position: absolute; left: 0; color: #198754; font-weight: 700; }
+.lista-nao-pode li::before { content: "✗"; position: absolute; left: 0; color: #dc3545; font-weight: 700; }
+.perfis-nota { margin-top: 1rem; }

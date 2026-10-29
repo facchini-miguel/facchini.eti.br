@@ -60,6 +60,10 @@ TEXTOS = {
         "anterior": "Tela anterior",
         "proxima": "Próxima tela",
         "fechar": "Fechar",
+        "perfis": "Perfis de acesso",
+        "perfis_texto": "Cada pessoa da clínica entra com o próprio usuário e senha, e vê só o que o perfil dela permite.",
+        "pode": "Pode",
+        "nao_pode": "Não pode",
     },
     "es": {
         "lang": "es",
@@ -97,6 +101,10 @@ TEXTOS = {
         "anterior": "Pantalla anterior",
         "proxima": "Pantalla siguiente",
         "fechar": "Cerrar",
+        "perfis": "Perfiles de acceso",
+        "perfis_texto": "Cada persona de la clínica entra con su propio usuario y contraseña, y ve solo lo que su perfil permite.",
+        "pode": "Puede",
+        "nao_pode": "No puede",
     },
     "en": {
         "lang": "en",
@@ -134,6 +142,10 @@ TEXTOS = {
         "anterior": "Previous screen",
         "proxima": "Next screen",
         "fechar": "Close",
+        "perfis": "Access roles",
+        "perfis_texto": "Everyone at the clinic signs in with their own username and password, and sees only what their role allows.",
+        "pode": "Can",
+        "nao_pode": "Cannot",
     },
 }
 

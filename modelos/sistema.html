@@ -42,6 +42,27 @@
 <script src="{{ raiz }}js/galeria.js?v={{ versao_arquivos }}" defer></script>
 {% endif %}
 
+{% if sistema.perfis %}
+<section class="largura" id="perfis">
+  <h2>{{ t.perfis }}</h2>
+  <p class="secundario">{{ t.perfis_texto }}</p>
+  <div class="perfis">
+    {% for perfil in sistema.perfis %}
+    <article class="perfil">
+      <a class="perfil-tela" href="{{ raiz }}{{ perfil.tela }}" target="_blank" rel="noopener"><img src="{{ raiz }}{{ perfil.tela }}" alt="{{ perfil.nome[idioma] }}" loading="lazy"></a>
+      <h3>{{ perfil.nome[idioma] }}</h3>
+      <p class="secundario">{{ perfil.resumo[idioma] }}</p>
+      <h4>{{ t.pode }}</h4>
+      <ul class="lista-pode">{% for item in perfil.pode %}<li>{{ item[idioma] }}</li>{% endfor %}</ul>
+      <h4>{{ t.nao_pode }}</h4>
+      <ul class="lista-nao-pode">{% for item in perfil.nao_pode %}<li>{{ item[idioma] }}</li>{% endfor %}</ul>
+    </article>
+    {% endfor %}
+  </div>
+  {% if sistema.perfis_nota %}<p class="secundario perfis-nota">{{ sistema.perfis_nota[idioma] }}</p>{% endif %}
+</section>
+{% endif %}
+
 <section class="largura colunas">
   <div>
     <h2>{{ t.recursos }}</h2>
