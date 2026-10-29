@@ -40,10 +40,10 @@ h2 { font-size: 1.5rem; margin-top: 2.5rem; }
 .secundario { color: var(--secundario); }
 
 .topo { background: var(--superficie); border-bottom: 1px solid var(--borda); }
-.topo-conteudo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; min-height: 4rem; padding: .35rem 0; }
+.topo-conteudo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; min-height: 4rem; padding-block: .35rem; }
 .marca { display: inline-flex; align-items: center; gap: .65rem; color: var(--texto); text-decoration: none; }
-.marca-logo { display: block; border-radius: 10px; box-shadow: 0 2px 8px rgb(13 110 253 / 30%); transition: transform .2s; }
-.marca:hover .marca-logo { transform: rotate(-6deg) scale(1.05); }
+.marca-logo { display: block; transition: transform .35s; }
+.marca:hover .marca-logo { transform: scale(1.08); }
 .marca-texto { display: flex; flex-direction: column; line-height: 1.15; }
 .marca-nome { font-weight: 800; font-size: 1.1rem; letter-spacing: -.01em; }
 .marca-lema { font-size: .78rem; color: var(--secundario); }
