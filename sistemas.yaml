@@ -6,7 +6,10 @@ site:
   github: https://github.com/facchini-miguel
   # Ways to support the projects. Each one appears only when filled in.
   apoio:
-    pix: ""              # Pix key (an e-mail or a random key; avoid the CPF)
+    pix: 8ed9040e-2c49-40e1-a7bb-b6447bbc4223  # Pix random key (never the CPF)
+    # Required by the Pix QR code standard (BR Code); shown by the payer's bank app.
+    pix_nome: MIGUEL FACCHINI
+    pix_cidade: SAO LEOPOLDO
     github_sponsors: ""  # e.g. https://github.com/sponsors/facchini-miguel
     kofi: ""             # e.g. https://ko-fi.com/<user>
 

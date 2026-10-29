@@ -103,3 +103,9 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 
 .rodape { padding: 1.5rem 0 2.5rem; color: var(--secundario); font-size: .9rem; }
 .rodape .largura { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; }
+
+.apoio-pix { max-width: 22rem; }
+/* The QR code stays black on white in both themes, so bank apps read it. */
+.pix-qr { background: #fff; border-radius: 8px; padding: .5rem; width: 12rem; }
+.pix-qr svg { display: block; width: 100%; height: auto; }
+.codigo-pix { font-size: .75rem; user-select: all; }

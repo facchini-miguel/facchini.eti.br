@@ -11,6 +11,8 @@ import shutil
 import urllib.request
 from pathlib import Path
 
+import qrcode
+import qrcode.image.svg
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -39,6 +41,8 @@ TEXTOS = {
         "apoio_em_breve": "As formas de apoio estão chegando.",
         "pix": "Pix",
         "pix_chave": "Chave Pix",
+        "pix_qr": "Aponte a câmera do aplicativo do banco",
+        "pix_copia": "Pix copia e cola",
         "sponsors": "GitHub Sponsors",
         "kofi": "Ko-fi",
         "voltar": "Todos os sistemas",
@@ -66,6 +70,8 @@ TEXTOS = {
         "apoio_em_breve": "Ways to support are coming soon.",
         "pix": "Pix (Brazil)",
         "pix_chave": "Pix key",
+        "pix_qr": "Scan with a Brazilian bank app",
+        "pix_copia": "Pix copy and paste",
         "sponsors": "GitHub Sponsors",
         "kofi": "Ko-fi",
         "voltar": "All systems",
@@ -86,10 +92,51 @@ def versao_mais_nova(repositorio):
         return None
 
 
+def _campo(codigo, valor):
+    return f"{codigo}{len(valor):02d}{valor}"
+
+
+def _crc16(texto):
+    """CRC16-CCITT (polynomial 0x1021, start 0xFFFF), as the BR Code standard asks."""
+    crc = 0xFFFF
+    for byte in texto.encode():
+        crc ^= byte << 8
+        for _ in range(8):
+            crc = ((crc << 1) ^ 0x1021) if crc & 0x8000 else crc << 1
+            crc &= 0xFFFF
+    return f"{crc:04X}"
+
+
+def pix_copia_e_cola(chave, nome, cidade):
+    """Static Pix payload (BR Code, no amount: the donor chooses it in the bank app)."""
+    conta = _campo("00", "br.gov.bcb.pix") + _campo("01", chave)
+    texto = (
+        _campo("00", "01")
+        + _campo("26", conta)
+        + _campo("52", "0000")
+        + _campo("53", "986")
+        + _campo("58", "BR")
+        + _campo("59", nome[:25])
+        + _campo("60", cidade[:15])
+        + _campo("62", _campo("05", "***"))
+        + "6304"
+    )
+    return texto + _crc16(texto)
+
+
+def qr_svg(texto):
+    imagem = qrcode.make(texto, image_factory=qrcode.image.svg.SvgPathImage, border=2)
+    return imagem.to_string(encoding="unicode")
+
+
 def main():
     dados = yaml.safe_load((RAIZ / "sistemas.yaml").read_text(encoding="utf-8"))
     for sistema in dados["sistemas"]:
         sistema["versao"] = versao_mais_nova(sistema["repositorio"])
+    apoio = dados["site"]["apoio"]
+    if apoio.get("pix"):
+        apoio["pix_codigo"] = pix_copia_e_cola(apoio["pix"], apoio["pix_nome"], apoio["pix_cidade"])
+        apoio["pix_qr"] = qr_svg(apoio["pix_codigo"])
     ambiente = Environment(
         loader=FileSystemLoader(RAIZ / "modelos"), autoescape=select_autoescape()
     )

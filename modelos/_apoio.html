@@ -6,10 +6,14 @@
     {% if apoio.pix or apoio.github_sponsors or apoio.kofi %}
     <div class="apoio-opcoes">
       {% if apoio.pix %}
-      <div class="apoio-opcao">
+      <div class="apoio-opcao apoio-pix">
         <strong>{{ t.pix }}</strong>
+        <div class="pix-qr" role="img" aria-label="{{ t.pix_qr }}">{{ apoio.pix_qr|safe }}</div>
+        <span class="secundario">{{ t.pix_qr }}</span>
         <span class="secundario">{{ t.pix_chave }}</span>
         <code class="chave">{{ apoio.pix }}</code>
+        <span class="secundario">{{ t.pix_copia }}</span>
+        <code class="chave codigo-pix">{{ apoio.pix_codigo }}</code>
       </div>
       {% endif %}
       {% if apoio.github_sponsors %}
