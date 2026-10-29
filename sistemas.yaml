@@ -145,6 +145,22 @@ sistemas:
           - {pt: A agenda dos outros profissionais, en: Other practitioners' schedules, es: La agenda de otros profesionales}
           - {pt: "Financeiro: recebimentos, contas e relatórios", en: "Finance: payments, accounts and reports", es: "Finanzas: cobros, cuentas e informes"}
           - {pt: "Equipe, configurações da clínica e auditoria", en: "Team, clinic settings and audit log", es: "Equipo, configuración de la clínica y auditoría"}
+      - nome: {pt: Financeiro, en: Finance, es: Financiero}
+        tela: imagens/kaladrius/perfil-financeiro.png
+        resumo:
+          pt: Cuida do dinheiro da clínica, sem ver a agenda nem o prontuário.
+          en: Looks after the clinic's money, without seeing the schedule or the medical record.
+          es: Cuida el dinero de la clínica, sin ver la agenda ni la historia clínica.
+        pode:
+          - {pt: "Contas a receber e a pagar, recebimentos e recibos", en: "Receivables and payables, payments and receipts", es: "Cuentas por cobrar y por pagar, cobros y recibos"}
+          - {pt: "Caixa do dia, fluxo de caixa e relatórios", en: "Cash desk, cash flow and reports", es: "Caja del día, flujo de caja e informes"}
+          - {pt: "Comissões e extrato bancário", en: "Commissions and bank statements", es: "Comisiones y extracto bancario"}
+          - {pt: "Cancelar lançamentos, estornar pagamentos e dar descontos", en: "Cancel entries, reverse payments and give discounts", es: "Anular asientos, revertir pagos y dar descuentos"}
+          - {pt: "Consultar pacientes, orçamentos e profissionais", en: "Look up patients, estimates and practitioners", es: "Consultar pacientes, presupuestos y profesionales"}
+        nao_pode:
+          - {pt: "Agenda, rechamadas e prontuário", en: "Schedule, recalls and medical record", es: "Agenda, recordatorios e historia clínica"}
+          - {pt: "Cadastrar ou alterar pacientes e orçamentos", en: "Add or change patients and estimates", es: "Registrar o modificar pacientes y presupuestos"}
+          - {pt: "Equipe, configurações da clínica e auditoria", en: "Team, clinic settings and audit log", es: "Equipo, configuración de la clínica y auditoría"}
       - nome: {pt: Administrador da clínica, en: Clinic administrator, es: Administrador de la clínica}
         tela: imagens/kaladrius/perfil-admin.png
         resumo:

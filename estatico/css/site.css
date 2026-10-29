@@ -149,7 +149,7 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 .apoio-opcao .botao { margin-top: auto; align-self: flex-start; }
 
 /* Access roles: one card per role, with its home screen and what it can and cannot do. */
-.perfis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.25rem; }
+.perfis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
 .perfil { background: var(--superficie); border: 1px solid var(--borda); border-radius: 12px; padding: 1rem; box-shadow: var(--sombra); }
 .perfil-tela img { border-radius: 8px; border: 1px solid var(--borda); aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; width: 100%; }
 .perfil h3 { margin: .75rem 0 .25rem; }
