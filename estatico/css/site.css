@@ -218,3 +218,4 @@ h2.com-icone .marca-icone { width: 1.1em; height: 1.1em; }
 .destaques { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem; }
 .destaques li { padding: .3rem .75rem; border-radius: 999px; background: var(--superficie); border: 1px solid var(--borda); font-size: .9rem; }
 .destaques li::before { content: "✓ "; color: #198754; font-weight: 700; }
+.sobre-abertura .chamada { max-width: none; font-size: 1.1rem; margin: 0 0 .75rem; }
