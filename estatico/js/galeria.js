@@ -1,14 +1,12 @@
 // Screenshot viewer: a click on a screenshot opens it large; the arrow keys, the
 // buttons, the mouse wheel, a click on either half of the image or a swipe move
-// to the previous or next one. Without JavaScript each link opens the image itself.
+// to the previous or next one of the same group ([data-galeria]: the screens, the
+// access roles). Without JavaScript each link opens the image itself.
 (function () {
-  const lista = document.querySelector(".telas");
-  if (!lista || !window.HTMLDialogElement) return;
-  const telas = [...lista.querySelectorAll("figure")].map((figura) => ({
-    src: figura.querySelector("a").href,
-    legenda: figura.querySelector("figcaption").textContent,
-  }));
-  const r = lista.dataset;
+  const grupos = document.querySelectorAll("[data-galeria]");
+  if (!grupos.length || !window.HTMLDialogElement) return;
+  const r = grupos[0].dataset;
+  let telas = [];
 
   const dialogo = document.createElement("dialog");
   dialogo.className = "galeria";
@@ -31,11 +29,16 @@
     new Image().src = telas[(atual + 1) % telas.length].src;
   }
 
-  lista.querySelectorAll("figure a").forEach((link, indice) => {
-    link.addEventListener("click", (evento) => {
-      evento.preventDefault();
-      mostrar(indice);
-      dialogo.showModal();
+  grupos.forEach((grupo) => {
+    const links = [...grupo.querySelectorAll("a.abre-galeria")];
+    const itens = links.map((link) => ({ src: link.href, legenda: link.querySelector("img").alt }));
+    links.forEach((link, indice) => {
+      link.addEventListener("click", (evento) => {
+        evento.preventDefault();
+        telas = itens;
+        mostrar(indice);
+        dialogo.showModal();
+      });
     });
   });
 

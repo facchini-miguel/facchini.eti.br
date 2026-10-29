@@ -159,3 +159,4 @@ a.apoio-opcao:hover { border-color: var(--destaque); }
 /* The top bar stays visible while scrolling; anchored sections stop below it. */
 .topo { position: sticky; top: 0; z-index: 10; background: var(--superficie); }
 [id] { scroll-margin-top: 5rem; }
+.perfil-tela { cursor: zoom-in; display: block; }

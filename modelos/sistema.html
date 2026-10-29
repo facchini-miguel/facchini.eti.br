@@ -30,26 +30,25 @@
 <section class="largura">
   <h2>{{ t.telas }}</h2>
   <p class="secundario">{{ t.dados_ficticios }} {{ t.dica_galeria }}</p>
-  <div class="telas" data-anterior="{{ t.anterior }}" data-proxima="{{ t.proxima }}" data-fechar="{{ t.fechar }}">
+  <div class="telas" data-galeria data-anterior="{{ t.anterior }}" data-proxima="{{ t.proxima }}" data-fechar="{{ t.fechar }}">
     {% for tela in sistema.telas %}
     <figure class="{% if loop.first %}tela-destaque{% endif %}">
-      <a href="{{ raiz }}{{ tela.arquivo }}"><img src="{{ raiz }}{{ tela.arquivo }}" alt="{{ tela.legenda[idioma] }}" loading="{{ 'eager' if loop.first else 'lazy' }}"></a>
+      <a class="abre-galeria" href="{{ raiz }}{{ tela.arquivo }}"><img src="{{ raiz }}{{ tela.arquivo }}" alt="{{ tela.legenda[idioma] }}" loading="{{ 'eager' if loop.first else 'lazy' }}"></a>
       <figcaption>{{ tela.legenda[idioma] }}</figcaption>
     </figure>
     {% endfor %}
   </div>
 </section>
-<script src="{{ raiz }}js/galeria.js?v={{ versao_arquivos }}" defer></script>
 {% endif %}
 
 {% if sistema.perfis %}
 <section class="largura" id="perfis">
   <h2>{{ t.perfis }}</h2>
   <p class="secundario">{{ t.perfis_texto }}</p>
-  <div class="perfis">
+  <div class="perfis" data-galeria data-anterior="{{ t.anterior }}" data-proxima="{{ t.proxima }}" data-fechar="{{ t.fechar }}">
     {% for perfil in sistema.perfis %}
     <article class="perfil">
-      <a class="perfil-tela" href="{{ raiz }}{{ perfil.tela }}" target="_blank" rel="noopener"><img src="{{ raiz }}{{ perfil.tela }}" alt="{{ perfil.nome[idioma] }}" loading="lazy"></a>
+      <a class="perfil-tela abre-galeria" href="{{ raiz }}{{ perfil.tela }}"><img src="{{ raiz }}{{ perfil.tela }}" alt="{{ t.tela_inicial_de }} {{ perfil.nome[idioma] }}" loading="lazy"></a>
       <h3>{{ perfil.nome[idioma] }}</h3>
       <p class="secundario">{{ perfil.resumo[idioma] }}</p>
       <h4>{{ t.pode }}</h4>
@@ -74,4 +73,5 @@
     <ul class="etiquetas">{% for tecnologia in sistema.tecnologias %}<li>{{ tecnologia }}</li>{% endfor %}</ul>
   </div>
 </section>
+<script src="{{ raiz }}js/galeria.js?v={{ versao_arquivos }}" defer></script>
 {% endblock %}
