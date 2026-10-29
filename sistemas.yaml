@@ -189,7 +189,7 @@ sistemas:
           en: Whoever installs and runs Kaladrius, such as the IT team. Sits above every role and has no public login in the demo.
           es: Quien instala y mantiene Kaladrius, como el equipo de TI. Está por encima de todos los perfiles y no tiene cuenta pública en la demostración.
         pode:
-          - {pt: "Tudo o que os outros perfis fazem, em todas as clínicas da instalação", en: "Everything the other roles do, in every clinic of the installation", es: "Todo lo que hacen los otros perfiles, en todas las clínicas de la instalación"}
+          - {pt: "Tudo o que os outros perfis fazem, na clínica inteira", en: "Everything the other roles do, across the whole clinic", es: "Todo lo que hacen los otros perfiles, en toda la clínica"}
           - {pt: "Prontuário completo: registra atendimentos em nome de um profissional, e a auditoria guarda quem fez", en: "The full medical record: writes visits on behalf of a practitioner, and the audit log keeps who did it", es: "La historia clínica completa: registra consultas en nombre de un profesional, y la auditoría guarda quién lo hizo"}
           - {pt: "Saúde do servidor: processador, memória, disco, rede e backups", en: "Server health: processor, memory, disk, network and backups", es: "Salud del servidor: procesador, memoria, disco, red y respaldos"}
           - {pt: "Painel técnico, documentação técnica e avisos de backup", en: "Technical admin panel, technical documentation and backup warnings", es: "Panel técnico, documentación técnica y avisos de respaldo"}
