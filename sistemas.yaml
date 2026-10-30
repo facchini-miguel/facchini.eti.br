@@ -61,9 +61,12 @@ sistemas:
       - pt: Orçamentos com tabela de procedimentos e odontograma
         en: Estimates with a procedure price list and dental chart
         es: Presupuestos con tabla de procedimientos y odontograma
-      - pt: Financeiro com caixa do dia, contas a receber e a pagar, fornecedores, centros de custo, comissões, extrato bancário e fechamento do período
-        en: Finance with the daily cash, receivables and payables, suppliers, cost centers, commissions, bank statements and closing the books
-        es: Finanzas con la caja del día, cuentas por cobrar y por pagar, proveedores, centros de costo, comisiones, extracto bancario y cierre del período
+      - pt: Financeiro com caixa do dia, contas a receber e a pagar, plano de contas, planejamento anual, fornecedores, centros de custo, comissões, extrato bancário e fechamento do período
+        en: Finance with the daily cash, receivables and payables, chart of accounts, yearly planning, suppliers, cost centers, commissions, bank statements and closing the books
+        es: Finanzas con la caja del día, cuentas por cobrar y por pagar, plan de cuentas, planificación anual, proveedores, centros de costo, comisiones, extracto bancario y cierre del período
+      - pt: Pessoal com funcionários, histórico de salários e folha do mês lançada no financeiro
+        en: Staff with employees, salary history and the month's pay launched into finance
+        es: Personal con empleados, historial de salarios y sueldos del mes registrados en el financiero
       - pt: Perfis de acesso, auditoria e regras da LGPD
         en: Access roles, audit log and Brazilian data protection (LGPD) rules
         es: Perfiles de acceso, auditoría y reglas de la ley brasileña de protección de datos (LGPD)
