@@ -26,9 +26,9 @@ sistemas:
       en: In development, running as a demo
       es: En desarrollo, funcionando como demostración
     resumo:
-      pt: Gestão de clínicas de saúde, de código aberto. Agenda, pacientes, prontuário, orçamentos, rechamadas e financeiro num só sistema web.
-      en: Open-source management for health clinics. Schedule, patients, medical record, estimates, recalls and finance in one web app.
-      es: Gestión de clínicas de salud, de código abierto. Agenda, pacientes, historia clínica, presupuestos, recordatorios y finanzas en un solo sistema web.
+      pt: Gestão de clínicas de saúde, de código aberto. Agenda, pacientes, prontuário, orçamentos, convênios, rechamadas e financeiro num só sistema web.
+      en: Open-source management for health clinics. Schedule, patients, medical record, estimates, health plans, recalls and finance in one web app.
+      es: Gestión de clínicas de salud, de código abierto. Agenda, pacientes, historia clínica, presupuestos, convenios, recordatorios y finanzas en un solo sistema web.
     descricao:
       pt:
         - O Kaladrius é um sistema web para clínicas odontológicas, médicas e de outras áreas da saúde. Funciona em qualquer navegador, no computador ou no celular, e cada clínica pode instalar no próprio servidor.
@@ -43,21 +43,27 @@ sistemas:
         - El nombre viene del caladrius, el ave blanca de las leyendas medievales que cura a los enfermos con la mirada.
         - Es gratuito y de código abierto, bajo la Licencia Apache 2.0, y está en portugués, inglés y español.
     recursos:
+      - pt: "Módulos que ligam e desligam: só Odontologia, só Medicina ou as duas, com agenda, prontuário, financeiro e os demais em comum"
+        en: "Modules you turn on and off: only Dentistry, only Medicine or both, sharing the schedule, medical record, finance and the rest"
+        es: "Módulos que se activan y desactivan: solo Odontología, solo Medicina o las dos, con agenda, historia clínica, finanzas y los demás en común"
       - pt: Agenda por profissional, com presença, faltas e horários bloqueados
         en: Schedule per practitioner, with attendance, no-shows and blocked times
         es: Agenda por profesional, con asistencia, ausencias y horarios bloqueados
-      - pt: Cadastro de pacientes, aniversariantes e rechamadas de retorno
-        en: Patient records, birthdays and follow-up recalls
-        es: Registro de pacientes, cumpleaños y recordatorios de control
+      - pt: Cadastro de pacientes com WhatsApp, aniversariantes e rechamadas de retorno
+        en: Patient records with WhatsApp, birthdays and follow-up recalls
+        es: Registro de pacientes con WhatsApp, cumpleaños y recordatorios de control
+      - pt: Convênios e carteirinhas dos pacientes, com aviso de validade
+        en: Health plans and patients' cards, with expiry warnings
+        es: Convenios y credenciales de los pacientes, con aviso de vencimiento
       - pt: Prontuário com anamnese, atestados, receitas, pedidos de exames e anexos
         en: Medical record with anamnesis, certificates, prescriptions, exam requests and attachments
         es: Historia clínica con anamnesis, certificados, recetas, solicitudes de exámenes y adjuntos
       - pt: Orçamentos com tabela de procedimentos e odontograma
         en: Estimates with a procedure price list and dental chart
         es: Presupuestos con tabla de procedimientos y odontograma
-      - pt: Financeiro com caixa do dia, contas a receber e a pagar, comissões e extrato bancário
-        en: Finance with the daily cash, receivables and payables, commissions and bank statements
-        es: Finanzas con la caja del día, cuentas por cobrar y por pagar, comisiones y extracto bancario
+      - pt: Financeiro com caixa do dia, contas a receber e a pagar, fornecedores, comissões e extrato bancário
+        en: Finance with the daily cash, receivables and payables, suppliers, commissions and bank statements
+        es: Finanzas con la caja del día, cuentas por cobrar y por pagar, proveedores, comisiones y extracto bancario
       - pt: Perfis de acesso, auditoria e regras da LGPD
         en: Access roles, audit log and Brazilian data protection (LGPD) rules
         es: Perfiles de acceso, auditoría y reglas de la ley brasileña de protección de datos (LGPD)
