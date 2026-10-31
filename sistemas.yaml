@@ -49,9 +49,9 @@ sistemas:
       - pt: Agenda por profissional, com presença, faltas e horários bloqueados
         en: Schedule per practitioner, with attendance, no-shows and blocked times
         es: Agenda por profesional, con asistencia, ausencias y horarios bloqueados
-      - pt: Cadastro de pacientes com WhatsApp, aniversariantes e rechamadas de retorno
-        en: Patient records with WhatsApp, birthdays and follow-up recalls
-        es: Registro de pacientes con WhatsApp, cumpleaños y recordatorios de control
+      - pt: Cadastro de pacientes com WhatsApp, pessoas relacionadas, aniversariantes e rechamadas de retorno
+        en: Patient records with WhatsApp, related people, birthdays and follow-up recalls
+        es: Registro de pacientes con WhatsApp, personas relacionadas, cumpleaños y recordatorios de control
       - pt: Convênios e carteirinhas dos pacientes, com aviso de validade
         en: Health plans and patients' cards, with expiry warnings
         es: Convenios y credenciales de los pacientes, con aviso de vencimiento
