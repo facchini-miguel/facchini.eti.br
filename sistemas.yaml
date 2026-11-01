@@ -52,9 +52,9 @@ sistemas:
       - pt: Cadastro de pacientes com WhatsApp, pessoas relacionadas, aniversariantes e rechamadas de retorno
         en: Patient records with WhatsApp, related people, birthdays and follow-up recalls
         es: Registro de pacientes con WhatsApp, personas relacionadas, cumpleaños y recordatorios de control
-      - pt: Convênios e carteirinhas dos pacientes, com aviso de validade
-        en: Health plans and patients' cards, with expiry warnings
-        es: Convenios y credenciales de los pacientes, con aviso de vencimiento
+      - pt: Convênios e carteirinhas dos pacientes, com aviso de validade e os registros e códigos de cada país (ANS e TUSS, Payer ID e CDT)
+        en: Health plans and patients' cards, with expiry warnings and each country's registries and codes (ANS and TUSS, Payer ID and CDT)
+        es: Convenios y credenciales de los pacientes, con aviso de vencimiento y los registros y códigos de cada país (ANS y TUSS, Payer ID y CDT)
       - pt: Prontuário com anamnese, atestados, receitas, pedidos de exames e anexos
         en: Medical record with anamnesis, certificates, prescriptions, exam requests and attachments
         es: Historia clínica con anamnesis, certificados, recetas, solicitudes de exámenes y adjuntos
