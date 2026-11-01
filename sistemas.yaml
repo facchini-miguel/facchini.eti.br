@@ -70,9 +70,9 @@ sistemas:
       - pt: Moeda da clínica (real, dólar, euro, libra, pesos…), escolhida pelo administrador e independente do idioma de cada pessoa
         en: The clinic's currency (real, dollar, euro, pound, pesos…), chosen by the administrator and independent of each person's language
         es: Moneda de la clínica (real, dólar, euro, libra, pesos…), elegida por el administrador e independiente del idioma de cada persona
-      - pt: País da clínica (Brasil, Estados Unidos, Reino Unido, Canadá, Austrália e África do Sul), com fuso horário, telefones, códigos postais e datas no formato do país
-        en: The clinic's country (Brazil, United States, United Kingdom, Canada, Australia and South Africa), with its time zone and the country's phones, postal codes and dates
-        es: País de la clínica (Brasil, Estados Unidos, Reino Unido, Canadá, Australia y Sudáfrica), con zona horaria, teléfonos, códigos postales y fechas en el formato del país
+      - pt: País da clínica (Brasil, Estados Unidos, Reino Unido, Canadá, Austrália, África do Sul e nove países da América Latina, do México à Argentina), com fuso horário, telefones, códigos postais, números e datas no formato do país
+        en: The clinic's country (Brazil, United States, United Kingdom, Canada, Australia, South Africa and nine Latin American countries, from Mexico to Argentina), with its time zone and the country's phones, postal codes, numbers and dates
+        es: País de la clínica (Brasil, Estados Unidos, Reino Unido, Canadá, Australia, Sudáfrica y nueve países de América Latina, de México a Argentina), con zona horaria, teléfonos, códigos postales, números y fechas en el formato del país
       - pt: Perfis de acesso, auditoria e regras da LGPD
         en: Access roles, audit log and Brazilian data protection (LGPD) rules
         es: Perfiles de acceso, auditoría y reglas de la ley brasileña de protección de datos (LGPD)
