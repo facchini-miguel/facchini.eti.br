@@ -1,12 +1,13 @@
-# Builds the site and publishes it on GitHub Pages: on every push, and once a day so the
-# version of each system follows its newest GitHub release.
+# Builds the site and publishes it on GitHub Pages: on every push, every hour so the version of
+# each system follows its newest GitHub release, and when a system's CI asks for it right after
+# publishing a release (workflow_dispatch, with a token of that repository).
 name: Publicar
 
 on:
   push:
     branches: [main]
   schedule:
-    - cron: "17 9 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:

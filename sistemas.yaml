@@ -67,6 +67,12 @@ sistemas:
       - pt: Pessoal com funcionários, histórico de salários e folha do mês lançada no financeiro
         en: Staff with employees, salary history and the month's pay launched into finance
         es: Personal con empleados, historial de salarios y sueldos del mes registrados en el financiero
+      - pt: Moeda da clínica (real, dólar, euro, libra, pesos…), escolhida pelo administrador e independente do idioma de cada pessoa
+        en: The clinic's currency (real, dollar, euro, pound, pesos…), chosen by the administrator and independent of each person's language
+        es: Moneda de la clínica (real, dólar, euro, libra, pesos…), elegida por el administrador e independiente del idioma de cada persona
+      - pt: País da clínica (Brasil, Estados Unidos, Reino Unido, Canadá, Austrália e África do Sul), com fuso horário, telefones, códigos postais e datas no formato do país
+        en: The clinic's country (Brazil, United States, United Kingdom, Canada, Australia and South Africa), with its time zone and the country's phones, postal codes and dates
+        es: País de la clínica (Brasil, Estados Unidos, Reino Unido, Canadá, Australia y Sudáfrica), con zona horaria, teléfonos, códigos postales y fechas en el formato del país
       - pt: Perfis de acesso, auditoria e regras da LGPD
         en: Access roles, audit log and Brazilian data protection (LGPD) rules
         es: Perfiles de acceso, auditoría y reglas de la ley brasileña de protección de datos (LGPD)
