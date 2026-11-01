@@ -81,6 +81,8 @@ sistemas:
       github: https://github.com/facchini-miguel/kaladrius
       versoes: https://github.com/facchini-miguel/kaladrius/releases
       app: ""
+    # Portuguese screenshots; the same file under imagens/<id>/en/ or /es/ is used on that
+    # language's page (construir.py, no_idioma), else the Portuguese one.
     telas:
       - arquivo: imagens/kaladrius/inicio.png
         legenda: {pt: Resumo do dia na tela de início, en: Summary of the day on the home page, es: Resumen del día en la pantalla de inicio}

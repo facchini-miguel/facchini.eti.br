@@ -290,6 +290,15 @@ def com_licenca(texto, sistema, idioma, pagina=None):
     return escape(texto).replace(nome, link)
 
 
+def no_idioma(caminho, idioma):
+    """The screenshot in the page's language: imagens/<id>/<idioma>/<file> when it exists
+    (for example imagens/kaladrius/en/agenda.png), else the Portuguese one, imagens/<id>/<file>."""
+    traduzido = Path(caminho).parent / idioma / Path(caminho).name
+    if idioma != "pt" and (RAIZ / "estatico" / traduzido).is_file():
+        return traduzido.as_posix()
+    return caminho
+
+
 def main():
     dados = yaml.safe_load((RAIZ / "sistemas.yaml").read_text(encoding="utf-8"))
     licenca = yaml.safe_load((RAIZ / "licenca.yaml").read_text(encoding="utf-8"))
@@ -303,6 +312,7 @@ def main():
         loader=FileSystemLoader(RAIZ / "modelos"), autoescape=select_autoescape()
     )
     ambiente.filters["com_licenca"] = com_licenca
+    ambiente.filters["no_idioma"] = no_idioma
     marcas = {nome: marca_svg(nome, cor) for nome, cor in MARCAS.items()}
     # Changes whenever the CSS or JavaScript changes, so browsers fetch the new files.
     resumo = hashlib.sha256()

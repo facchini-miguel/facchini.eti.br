@@ -57,7 +57,7 @@
   <div class="telas" data-galeria data-anterior="{{ t.anterior }}" data-proxima="{{ t.proxima }}" data-fechar="{{ t.fechar }}">
     {% for tela in sistema.telas %}
     <figure class="{% if loop.first %}tela-destaque{% endif %}">
-      <a class="abre-galeria" href="{{ raiz }}{{ tela.arquivo }}"><img src="{{ raiz }}{{ tela.arquivo }}" alt="{{ tela.legenda[idioma] }}" loading="{{ 'eager' if loop.first else 'lazy' }}"></a>
+      <a class="abre-galeria" href="{{ raiz }}{{ tela.arquivo|no_idioma(idioma) }}"><img src="{{ raiz }}{{ tela.arquivo|no_idioma(idioma) }}" alt="{{ tela.legenda[idioma] }}" loading="{{ 'eager' if loop.first else 'lazy' }}"></a>
       <figcaption>{{ tela.legenda[idioma] }}</figcaption>
     </figure>
     {% endfor %}
@@ -72,7 +72,7 @@
   <div class="perfis" data-galeria data-anterior="{{ t.anterior }}" data-proxima="{{ t.proxima }}" data-fechar="{{ t.fechar }}">
     {% for perfil in sistema.perfis %}
     <article class="perfil{% if perfil.destaque %} perfil-destaque{% endif %}">
-      <a class="perfil-tela abre-galeria" href="{{ raiz }}{{ perfil.tela }}"><img src="{{ raiz }}{{ perfil.tela }}" alt="{% if perfil.destaque %}{{ t.saude_do_servidor }}{% else %}{{ t.tela_inicial_de }} {{ perfil.nome[idioma] }}{% endif %}" loading="lazy"></a>
+      <a class="perfil-tela abre-galeria" href="{{ raiz }}{{ perfil.tela|no_idioma(idioma) }}"><img src="{{ raiz }}{{ perfil.tela|no_idioma(idioma) }}" alt="{% if perfil.destaque %}{{ t.saude_do_servidor }}{% else %}{{ t.tela_inicial_de }} {{ perfil.nome[idioma] }}{% endif %}" loading="lazy"></a>
       <div class="perfil-texto">
       <h3>{{ perfil.nome[idioma] }}</h3>
       <p class="secundario">{{ perfil.resumo[idioma] }}</p>
