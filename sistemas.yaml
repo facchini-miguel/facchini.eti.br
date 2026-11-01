@@ -58,9 +58,9 @@ sistemas:
       - pt: Prontuário com anamnese, atestados, receitas, pedidos de exames e anexos
         en: Medical record with anamnesis, certificates, prescriptions, exam requests and attachments
         es: Historia clínica con anamnesis, certificados, recetas, solicitudes de exámenes y adjuntos
-      - pt: Orçamentos com tabela de procedimentos e odontograma
-        en: Estimates with a procedure price list and dental chart
-        es: Presupuestos con tabla de procedimientos y odontograma
+      - pt: Orçamentos com tabela de procedimentos e odontograma (numeração FDI, Universal ou Palmer)
+        en: Estimates with a procedure price list and dental chart (FDI, Universal or Palmer numbering)
+        es: Presupuestos con tabla de procedimientos y odontograma (numeración FDI, Universal o Palmer)
       - pt: Financeiro com caixa do dia, contas a receber e a pagar, plano de contas, planejamento anual, fornecedores, centros de custo, comissões, extrato bancário e fechamento do período
         en: Finance with the daily cash, receivables and payables, chart of accounts, yearly planning, suppliers, cost centers, commissions, bank statements and closing the books
         es: Finanzas con la caja del día, cuentas por cobrar y por pagar, plan de cuentas, planificación anual, proveedores, centros de costo, comisiones, extracto bancario y cierre del período
