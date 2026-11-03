@@ -1,0 +1,32 @@
+# Dependabot: pull requests that update the libraries construir.py uses to build the site and
+# the actions of the publishing workflow. Security fixes come as soon as an advisory is
+# published; version updates come on a schedule, grouped in one pull request per ecosystem.
+#
+# 7-day cooldown (as in Kaladrius, decision 143): a version update only proposes a release
+# published at least 7 days ago, because a compromised package is usually pulled within hours
+# or days. Security updates ignore the cooldown and still come right away.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Sao_Paulo
+    cooldown:
+      default-days: 7
+    groups:
+      python:
+        patterns: ["*"]
+
+  # Actions are pinned to a commit with the tag in a comment: Dependabot updates both.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    groups:
+      acoes:
+        patterns: ["*"]
