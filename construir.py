@@ -28,6 +28,7 @@ MARCAS = {"email": "currentColor", "github": "currentColor", "linkedin": "#0A66C
 TEXTOS = {
     "pt": {
         "lang": "pt-BR",
+        "og_locale": "pt_BR",
         "titulo_inicio": "Sistemas para usar, instalar e melhorar",
         "chamada": "Gratuitos e de código aberto, para o dia a dia de quem trabalha.",
         "destaques": ["Gratuitos", "Código aberto (Apache 2.0)", "Instale no seu servidor", "Português, inglês e espanhol"],
@@ -92,6 +93,7 @@ TEXTOS = {
     },
     "es": {
         "lang": "es",
+        "og_locale": "es_ES",
         "titulo_inicio": "Sistemas para usar, instalar y mejorar",
         "chamada": "Gratuitos y de código abierto, para el día a día de quien trabaja.",
         "destaques": ["Gratuitos", "Código abierto (Apache 2.0)", "Instálelos en su servidor", "Portugués, inglés y español"],
@@ -156,6 +158,7 @@ TEXTOS = {
     },
     "en": {
         "lang": "en",
+        "og_locale": "en_US",
         "titulo_inicio": "Systems to use, install and improve",
         "chamada": "Free and open source, for people's everyday work.",
         "destaques": ["Free", "Open source (Apache 2.0)", "Install on your own server", "Portuguese, English and Spanish"],
@@ -299,6 +302,27 @@ def no_idioma(caminho, idioma):
     return caminho
 
 
+def sitemap(mapa):
+    """sitemap.xml for search engines: each page once per language, with its other languages."""
+    linhas = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    ]
+    for enderecos in mapa.values():
+        alternativas = [
+            f'    <xhtml:link rel="alternate" hreflang="{TEXTOS[codigo]["lang"]}" href="{escape(url)}"/>'
+            for codigo, url in enderecos.items()
+        ]
+        alternativas.append(
+            f'    <xhtml:link rel="alternate" hreflang="x-default" href="{escape(enderecos["pt"])}"/>'
+        )
+        for url in enderecos.values():
+            linhas += ["  <url>", f"    <loc>{escape(url)}</loc>", *alternativas, "  </url>"]
+    linhas.append("</urlset>")
+    return "\n".join(linhas) + "\n"
+
+
 def main():
     dados = yaml.safe_load((RAIZ / "sistemas.yaml").read_text(encoding="utf-8"))
     licenca = yaml.safe_load((RAIZ / "licenca.yaml").read_text(encoding="utf-8"))
@@ -323,6 +347,9 @@ def main():
     if SAIDA.exists():
         shutil.rmtree(SAIDA)
     shutil.copytree(RAIZ / "estatico", SAIDA)
+    endereco = dados["site"]["endereco"]
+    # Every page in every language, for the sitemap: {page: {language: address}}.
+    mapa = {}
     for idioma, pasta in IDIOMAS.items():
         paginas = [
             ("index.html", "inicio.html", None),
@@ -333,6 +360,11 @@ def main():
         ]
         for destino, modelo, sistema in paginas:
             caminho = pasta + destino
+            no_idioma_ = {
+                codigo: endereco + IDIOMAS[codigo] + destino.removesuffix("index.html")
+                for codigo in IDIOMAS
+            }
+            mapa[destino] = no_idioma_
             profundidade = caminho.count("/")
             raiz = "../" * profundidade or "./"
             pagina = ambiente.get_template(modelo).render(
@@ -347,6 +379,7 @@ def main():
                 prefixo=pasta,
                 marcas=marcas,
                 versao_arquivos=versao_arquivos,
+                canonico=no_idioma_[idioma],
                 ano=datetime.date.today().year,
                 # The same page in each language, for the flags in the header.
                 idiomas=[
@@ -355,6 +388,7 @@ def main():
                         "lang": TEXTOS[codigo]["lang"],
                         "nome": TEXTOS[codigo]["nome_idioma"],
                         "url": raiz + IDIOMAS[codigo] + destino.removesuffix("index.html"),
+                        "endereco": no_idioma_[codigo],
                     }
                     for codigo in IDIOMAS
                 ],
@@ -362,6 +396,10 @@ def main():
             arquivo = SAIDA / caminho
             arquivo.parent.mkdir(parents=True, exist_ok=True)
             arquivo.write_text(pagina, encoding="utf-8")
+    (SAIDA / "sitemap.xml").write_text(sitemap(mapa), encoding="utf-8")
+    (SAIDA / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\n\nSitemap: {endereco}sitemap.xml\n", encoding="utf-8"
+    )
     (SAIDA / ".nojekyll").write_text("")
     print(f"Site pronto em {SAIDA}")
 

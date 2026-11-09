@@ -3,6 +3,8 @@
 
 site:
   titulo: Miguel Facchini
+  # The public address: canonical links, the sitemap and robots.txt for search engines.
+  endereco: https://www.facchini.eti.br/
   github: https://github.com/facchini-miguel
   youtube: https://www.youtube.com/@404devopsnotfound
   email: miguelfacchini@gmail.com
