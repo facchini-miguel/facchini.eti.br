@@ -3,8 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block titulo %}{{ site.titulo }}{% endblock %}</title>
+  <title>{% block titulo %}{{ site.titulo }} · {{ t.lema }}{% endblock %}</title>
   <meta name="description" content="{% block descricao %}{{ t.chamada }}{% endblock %}">
+  <link rel="canonical" href="{{ canonico }}">
+  {% for i in idiomas %}
+  <link rel="alternate" hreflang="{{ i.lang }}" href="{{ i.endereco }}">
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ idiomas[0].endereco }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.titulo }}">
+  <meta property="og:title" content="{{ self.titulo() }}">
+  <meta property="og:description" content="{{ self.descricao() }}">
+  <meta property="og:url" content="{{ canonico }}">
+  <meta property="og:locale" content="{{ t.og_locale }}">
   <link rel="icon" href="{{ raiz }}imagens/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="{{ raiz }}css/site.css?v={{ versao_arquivos }}">
 </head>
