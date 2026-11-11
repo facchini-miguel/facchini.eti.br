@@ -1,5 +1,5 @@
-# Dependabot: pull requests that update the libraries construir.py uses to build the site and
-# the actions of the publishing workflow. Security fixes come as soon as an advisory is
+# Dependabot: pull requests that update the libraries construir.py uses to build the site, the
+# actions of the check workflow and the Docker images the VPS runs (deploy/compose.yml). Security fixes come as soon as an advisory is
 # published; version updates come on a schedule, grouped in one pull request per ecosystem.
 #
 # 7-day cooldown (as in Kaladrius, decision 143): a version update only proposes a release
@@ -29,4 +29,20 @@ updates:
       default-days: 7
     groups:
       acoes:
+        patterns: ["*"]
+
+  # The images of deploy/compose.yml (nginx and the builder's Python), which the VPS runs. A
+  # merged update reaches the VPS only when deploy/apply.sh runs (the builder fetches the site's
+  # files, not compose.yml).
+  - package-ecosystem: docker-compose
+    directory: /deploy
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Sao_Paulo
+    cooldown:
+      default-days: 7
+    groups:
+      imagens:
         patterns: ["*"]
