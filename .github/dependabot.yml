@@ -34,6 +34,9 @@ updates:
   # The images of deploy/compose.yml (nginx and the builder's Python), which the VPS runs. A
   # merged update reaches the VPS only when deploy/apply.sh runs (the builder fetches the site's
   # files, not compose.yml).
+  # Only fixes within the same version (1.30.x, 3.13.x): nginx's odd minor versions (1.31) are
+  # its development line, the stable one is even; a new Python is a change of its own. A new
+  # stable line is changed by hand.
   - package-ecosystem: docker-compose
     directory: /deploy
     schedule:
@@ -43,6 +46,9 @@ updates:
       timezone: America/Sao_Paulo
     cooldown:
       default-days: 7
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
     groups:
       imagens:
         patterns: ["*"]
