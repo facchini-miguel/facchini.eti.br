@@ -128,8 +128,11 @@ valid() {  # valid <host>: Traefik here serves a certificate curl trusts for it
   curl -sS -m 10 -o /dev/null --resolve "$1:443:127.0.0.1" "https://$1/" 2>/dev/null
 }
 pending=""
+# Asked to the domain's own name servers, as Let's Encrypt does: this server's resolver may keep
+# the old address for up to the records' TTL (an hour).
+nameserver=$(dig +short NS "$APEX" | head -1)
 for host in "$WWW" "$APEX"; do
-  points=$(getent ahostsv4 "$host" | awk 'NR == 1 {print $1}')
+  points=$(dig +short A "$host" @"${nameserver:-a.sec.dns.br}" | tail -1)
   if valid "$host"; then
     printf '   %-24s DNS %-16s certificate ok\n' "$host" "$points"
   elif [[ "$here" == *" $points "* ]]; then
