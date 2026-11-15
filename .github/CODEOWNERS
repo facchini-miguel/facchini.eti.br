@@ -1,0 +1,12 @@
+# Structural files. A pull request that changes any of them needs an approval
+# from @facchini-miguel before it can be merged (ruleset "Protect main").
+# Everything else (pages, styles, texts, sistemas.yaml) is merged once CI passes.
+
+# CI, Dependabot and this file
+/.github/                       @facchini-miguel
+
+# The server: compose file and the scripts that set it up and apply changes
+/deploy/                        @facchini-miguel
+
+# Dependencies
+/requirements.txt               @facchini-miguel
