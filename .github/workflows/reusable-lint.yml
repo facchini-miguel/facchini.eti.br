@@ -44,8 +44,8 @@ jobs:
         run: |
           python3 -m venv "$RUNNER_TEMP/ruff"
           if [ -n "$RUFF_FROM" ]; then
-            # The ruff== line and its --hash lines, up to the next package of the file.
-            sed -n '/^ruff==/,/^[a-z]/p' "$RUFF_FROM" | sed '$ { /^[a-z]/d }' > "$RUNNER_TEMP/ruff.txt"
+            # The ruff== line and its --hash (and comment) lines, up to the next package of the file.
+            awk '/^ruff==/ {found = 1; print; next} found && /^[a-zA-Z]/ {exit} found {print}' "$RUFF_FROM" > "$RUNNER_TEMP/ruff.txt"
             [ -s "$RUNNER_TEMP/ruff.txt" ] || { echo "::error::$RUFF_FROM has no ruff== line"; exit 1; }
           else
             cat > "$RUNNER_TEMP/ruff.txt" <<'RUFF'
