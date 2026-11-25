@@ -1,0 +1,324 @@
+# For the owner's PUBLIC repositories: a copy of the shared image-age check (the 7-day cooldown of the images a pull request brings, ci/image_age.py embedded), whose source is
+# facchini-miguel/arauto's .github/workflows/reusable-image-age.yml (private). A public repository cannot call a
+# private one's workflows, so the public ones call this copy (the owner chose it: "coloca o que o
+# ci faz no facchini.eti.br, ele fica para os publicos ... e para o privado, deixa o arauto").
+# Called by the public repositories that want it:
+#
+#   uses: facchini-miguel/facchini.eti.br/.github/workflows/reusable-image-age.yml@<sha>
+#
+# Do not change it here: change arauto's, then bring it here by a pull request, the same from the
+# "name:" line on (arauto's CI warns while they differ: checks/shared_workflows.py --public). See
+# arauto's README, "Shared workflows".
+name: image-age
+
+on:
+  workflow_call:
+    inputs:
+      sources:
+        description: 'Where the images are, one per line: "compose <glob>", "dockerfile <glob>" or "var <file> <NAME>"'
+        type: string
+        required: true
+      require-digest:
+        description: An image without a digest (tag@sha256:...) fails
+        type: boolean
+        default: false
+      ignore:
+        description: A regular expression; images whose name matches it are left out (built here)
+        type: string
+        default: ""
+      days:
+        description: The cooldown, in days
+        type: number
+        default: 7
+
+permissions:
+  contents: read
+
+jobs:
+  image-age:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Images published at least ${{ inputs.days }} days ago, the pinned ones to the tag's digest
+        env:
+          BASE: origin/${{ github.base_ref || 'main' }}
+          SKIP_COOLDOWN: ${{ contains(github.event.pull_request.labels.*.name, 'skip-cooldown') }}
+          SOURCES: ${{ inputs.sources }}
+          REQUIRE_DIGEST: ${{ inputs.require-digest }}
+          IGNORE: ${{ inputs.ignore }}
+          DAYS: ${{ inputs.days }}
+        run: |
+          python3 - "$BASE" <<'IMAGE_AGE_PY'
+          #!/usr/bin/env python3
+          """The 7-day cooldown of the images a pull request brings (the shared image-age check).
+
+          Every image a pull request brings (new, or with another version than in the base branch) must
+          have been published at least DAYS (7) days ago: a compromised release is usually pulled within
+          hours or days, and Dependabot's own cooldown needs a publication date the registry does not
+          always give (ghcr.io gives none). When the image is pinned (tag@sha256:...), its digest must also
+          be the tag's current one, so the pin is the image the tag names.
+
+          The date: Docker Hub's tag_last_pushed; on any other registry (ghcr.io...), the newest build date
+          ("created") of the image's linux/amd64 configuration, read through the registry's own API.
+
+              image_age.py <base ref>   only the images that differ from <base ref> (the pull request's)
+              image_age.py --all        every image (to look at them by hand)
+
+          The environment says where the images are and how strict to be (the inputs of
+          .github/workflows/reusable-image-age.yml):
+              SOURCES          one per line: "compose <glob>" (image: lines), "dockerfile <glob>" (FROM
+                               lines, without the file's own stages and scratch) or "var <file> <NAME>"
+                               (NAME=<image> lines)
+              REQUIRE_DIGEST   "true": an image without a digest fails
+              IGNORE           a regular expression: images whose name (without the digest) matches it are
+                               left out (images built by the repository itself, for one)
+              DAYS             the cooldown, 7 by default
+              SKIP_COOLDOWN    "true" (the pull request's "skip-cooldown" label, for an urgent fix the owner
+                               decided): a young image is a warning; a wrong or missing digest still fails
+
+          Dependabot security updates would be released at once too, but Dependabot has none for Docker
+          images (its Docker and Docker Compose ecosystems have version updates only), so the label is the
+          only way. Runs on the runner's own python3 (3.12 on ubuntu-24.04): nothing newer than 3.12 here.
+
+          The source of the copy embedded in reusable-image-age.yml (checks/shared_workflows.py keeps
+          them equal). Brought together from the checks of vps, grafana.facchini.eti.br and dubquill.
+          """
+
+          import datetime
+          import glob
+          import json
+          import os
+          import re
+          import subprocess
+          import sys
+          import urllib.error
+          import urllib.request
+
+          IMAGE_LINE = re.compile(r"""^\s*image:\s*["']?([^"'\s#]+)""", re.M)
+          FROM_LINE = re.compile(r"""^\s*FROM\s+(?:--\S+\s+)*([^\s#]+)(?:\s+AS\s+([^\s#]+))?""", re.M | re.I)
+          INDEX_TYPES = ", ".join(
+              [
+                  "application/vnd.oci.image.index.v1+json",
+                  "application/vnd.docker.distribution.manifest.list.v2+json",
+                  "application/vnd.oci.image.manifest.v1+json",
+                  "application/vnd.docker.distribution.manifest.v2+json",
+              ]
+          )
+          # A build date before this is a reproducible build's fixed date, not when it was published.
+          EARLIEST = datetime.datetime(2015, 1, 1, tzinfo=datetime.UTC)
+
+
+          class Settings:
+              def __init__(self, env):
+                  self.sources = parse_sources(env.get("SOURCES", ""))
+                  self.require_digest = env.get("REQUIRE_DIGEST", "false").lower() == "true"
+                  self.ignore = re.compile(env["IGNORE"]) if env.get("IGNORE") else None
+                  self.days = int(env.get("DAYS") or 7)
+                  self.skip = env.get("SKIP_COOLDOWN", "false").lower() == "true"
+
+
+          def parse_sources(text):
+              """[(kind, glob, NAME or None)] from the SOURCES lines."""
+              out = []
+              for number, raw in enumerate(text.splitlines(), 1):
+                  line = raw.split("#", 1)[0].strip()
+                  if not line:
+                      continue
+                  parts = line.split()
+                  if parts[0] in ("compose", "dockerfile") and len(parts) == 2:
+                      out.append((parts[0], parts[1], None))
+                  elif parts[0] == "var" and len(parts) == 3:
+                      out.append(("var", parts[1], parts[2]))
+                  else:
+                      raise ValueError(
+                          f"SOURCES line {number}: {raw.strip()!r} is not 'compose <glob>', "
+                          "'dockerfile <glob>' or 'var <file> <NAME>'"
+                      )
+              if not out:
+                  raise ValueError("SOURCES is empty: say where the images are")
+              return out
+
+
+          def images_in(kind, text, name=None):
+              """The images of a file of that kind."""
+              if kind == "dockerfile":
+                  pairs = FROM_LINE.findall(text)
+                  stages = {stage.lower() for _, stage in pairs if stage}
+                  return {image for image, _ in pairs if image.lower() not in stages and image.lower() != "scratch"}
+              if kind == "var":
+                  return set(re.findall(rf"""^{re.escape(name)}=["']?([^"'\s#]+)""", text, re.M))
+              return set(IMAGE_LINE.findall(text))
+
+
+          def at(ref, path):
+              """The file at <ref> ("" when it did not exist there)."""
+              result = subprocess.run(["git", "show", f"{ref}:{path}"], capture_output=True, text=True)
+              return result.stdout if result.returncode == 0 else ""
+
+
+          def wanted_images(base, settings, root=".", read_base=at):
+              """The images to check: all of them (base "--all") or those that differ from the base."""
+              wanted = set()
+              for kind, pattern, name in settings.sources:
+                  for path in sorted(glob.glob(pattern, root_dir=root)):
+                      with open(os.path.join(root, path), encoding="utf-8") as f:
+                          now = images_in(kind, f.read(), name)
+                      wanted |= now if base == "--all" else now - images_in(kind, read_base(base, path), name)
+              if settings.ignore:
+                  wanted = {image for image in wanted if not settings.ignore.search(image.split("@")[0])}
+              return wanted
+
+
+          def parse(image):
+              """(registry, repository, tag, digest) of registry/repo:tag@sha256:..."""
+              name, _, digest = image.partition("@")
+              repo, _, tag = name.rpartition(":")
+              if not repo or "/" in tag:
+                  raise ValueError("no tag: write the version")
+              first = repo.split("/")[0]
+              if "." in first or ":" in first or first == "localhost":
+                  registry, _, repo = repo.partition("/")
+              else:
+                  registry = "docker.io"
+              return registry, repo, tag, digest
+
+
+          def when(text):
+              """An ISO 8601 time, in UTC; Go writes nanoseconds, cut to microseconds."""
+              text = re.sub(r"(\.\d{6})\d+", r"\1", text.replace("Z", "+00:00"))
+              return datetime.datetime.fromisoformat(text).astimezone(datetime.UTC)
+
+
+          def hub(repo, tag):
+              """Docker Hub: (pushed, the tag's digests)."""
+              namespace, rest = repo.split("/", 1) if "/" in repo else ("library", repo)
+              url = f"https://hub.docker.com/v2/namespaces/{namespace}/repositories/{rest}/tags/{tag}"
+              with urllib.request.urlopen(url, timeout=30) as response:
+                  record = json.load(response)
+              pushed = record.get("tag_last_pushed") or record.get("last_updated")
+              digests = {record.get("digest")} | {i.get("digest") for i in record.get("images") or []}
+              return when(pushed), digests
+
+
+          class Registry:
+              """Just enough of the registry API (OCI distribution) to read public images anonymously."""
+
+              def __init__(self, registry, repo):
+                  self.base = f"https://{registry}/v2/{repo}"
+                  self.repo = repo
+                  self.token = None
+
+              def get(self, path, accept=None):
+                  for _ in range(2):
+                      request = urllib.request.Request(self.base + path)
+                      if accept:
+                          request.add_header("Accept", accept)
+                      if self.token:
+                          request.add_header("Authorization", "Bearer " + self.token)
+                      try:
+                          with urllib.request.urlopen(request, timeout=30) as response:
+                              return response.headers, json.load(response)
+                      except urllib.error.HTTPError as error:
+                          if error.code != 401 or self.token:
+                              raise
+                          self.login(error.headers.get("WWW-Authenticate", ""))
+                  raise RuntimeError("the registry refused the anonymous token")
+
+              def login(self, challenge):
+                  fields = dict(re.findall(r'(\w+)="([^"]*)"', challenge))
+                  if "realm" not in fields:
+                      raise RuntimeError(f"no token service in {challenge!r}")
+                  query = f"service={fields.get('service', '')}&scope=repository:{self.repo}:pull"
+                  with urllib.request.urlopen(f"{fields['realm']}?{query}", timeout=30) as response:
+                      answer = json.load(response)
+                  self.token = answer.get("token") or answer.get("access_token")
+
+
+          def other(registry, repo, tag):
+              """Any other registry: (newest linux/amd64 build date, the tag's current digest)."""
+              api = Registry(registry, repo)
+              headers, manifest = api.get(f"/manifests/{tag}", INDEX_TYPES)
+              current = headers.get("Docker-Content-Digest")
+              if "manifests" in manifest:  # an index: the amd64 image(s), not the attestations
+                  amd64 = [
+                      m["digest"]
+                      for m in manifest["manifests"]
+                      if m.get("platform", {}).get("os") == "linux"
+                      and m.get("platform", {}).get("architecture") == "amd64"
+                  ]
+                  if not amd64:
+                      raise RuntimeError("no linux/amd64 image in the tag's index")
+                  manifests = [api.get(f"/manifests/{digest}", INDEX_TYPES)[1] for digest in amd64]
+              else:
+                  manifests = [manifest]
+              dates = []
+              for item in manifests:
+                  config = api.get(f"/blobs/{item['config']['digest']}")[1]
+                  labels = (config.get("config") or {}).get("Labels") or {}
+                  for value in (config.get("created"), labels.get("org.opencontainers.image.created")):
+                      if value:
+                          dates.append(when(value))
+              dates = [date for date in dates if date >= EARLIEST]
+              if not dates:
+                  raise RuntimeError("the image has no build date: check when it was published by hand")
+              return max(dates), {current}
+
+
+          def lookup(image):
+              registry, repo, tag, _ = parse(image)
+              return hub(repo, tag) if registry == "docker.io" else other(registry, repo, tag)
+
+
+          def verdict(image, published, digests, now, settings):
+              """(level, line): level "ok", "warning" or "error"."""
+              digest = image.partition("@")[2]
+              age = now - published
+              line = f"{image.split('@')[0]}: published {published:%Y-%m-%d %H:%M} UTC, {age.days} day(s) ago"
+              if not digest and settings.require_digest:
+                  return "error", f"{line}; no digest: pin it as tag@sha256:..."
+              if digest and digest not in digests:
+                  return "error", f"{line}; the digest {digest[:19]}... is not this tag's current one"
+              if age < datetime.timedelta(days=settings.days):
+                  ready = (published + datetime.timedelta(days=settings.days)).strftime("%Y-%m-%d %H:%M")
+                  message = f"{line}; the {settings.days}-day cooldown ends {ready} UTC"
+                  if settings.skip:
+                      return "warning", message + " (skipped: skip-cooldown label)"
+                  return "error", message
+              return "ok", line
+
+
+          def main(argv=None, env=None, now=None, find=lookup, root="."):
+              argv = sys.argv[1:] if argv is None else argv
+              if len(argv) != 1:
+                  print(__doc__)
+                  return 2
+              try:
+                  settings = Settings(os.environ if env is None else env)
+              except ValueError as error:
+                  print(f"::error::{error}")
+                  return 2
+              now = now or datetime.datetime.now(datetime.UTC)
+              wanted = wanted_images(argv[0], settings, root)
+              if not wanted:
+                  print("No new or changed image.")
+              failed = False
+              for image in sorted(wanted):
+                  try:
+                      published, digests = find(image)
+                  except Exception as error:  # noqa: BLE001 (any failure is a failed check)
+                      print(f"::error::{image}: {error}")
+                      failed = True
+                      continue
+                  level, line = verdict(image, published, digests, now, settings)
+                  print(f"ok {line}" if level == "ok" else f"::{level}::{line}")
+                  failed = failed or level == "error"
+              return 1 if failed else 0
+
+
+          if __name__ == "__main__":
+              sys.exit(main())
+          IMAGE_AGE_PY

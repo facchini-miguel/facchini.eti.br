@@ -23,7 +23,14 @@ RAIZ = Path(__file__).parent
 SAIDA = RAIZ / "_site"
 IDIOMAS = {"pt": "", "es": "es/", "en": "en/"}
 # Brand icons from Simple Icons (CC0), drawn inline in these colors.
-MARCAS = {"email": "currentColor", "github": "currentColor", "linkedin": "#0A66C2", "youtube": "#FF0000", "kofi": "#FF5E5B", "pix": "#32BCAD"}
+MARCAS = {
+    "email": "currentColor",
+    "github": "currentColor",
+    "linkedin": "#0A66C2",
+    "youtube": "#FF0000",
+    "kofi": "#FF5E5B",
+    "pix": "#32BCAD",
+}
 
 TEXTOS = {
     "pt": {
@@ -31,7 +38,12 @@ TEXTOS = {
         "og_locale": "pt_BR",
         "titulo_inicio": "Sistemas para usar, instalar e melhorar",
         "chamada": "Gratuitos e de código aberto, para o dia a dia de quem trabalha.",
-        "destaques": ["Gratuitos", "Código aberto (Apache 2.0)", "Instale no seu servidor", "Português, inglês e espanhol"],
+        "destaques": [
+            "Gratuitos",
+            "Código aberto (Apache 2.0)",
+            "Instale no seu servidor",
+            "Português, inglês e espanhol",
+        ],
         "sistemas": "Sistemas",
         "lema": "Sistemas de código aberto",
         "sobre": "Sobre",
@@ -96,7 +108,12 @@ TEXTOS = {
         "og_locale": "es_ES",
         "titulo_inicio": "Sistemas para usar, instalar y mejorar",
         "chamada": "Gratuitos y de código abierto, para el día a día de quien trabaja.",
-        "destaques": ["Gratuitos", "Código abierto (Apache 2.0)", "Instálelos en su servidor", "Portugués, inglés y español"],
+        "destaques": [
+            "Gratuitos",
+            "Código abierto (Apache 2.0)",
+            "Instálelos en su servidor",
+            "Portugués, inglés y español",
+        ],
         "sistemas": "Sistemas",
         "lema": "Sistemas de código abierto",
         "sobre": "Sobre mí",
@@ -161,7 +178,12 @@ TEXTOS = {
         "og_locale": "en_US",
         "titulo_inicio": "Systems to use, install and improve",
         "chamada": "Free and open source, for people's everyday work.",
-        "destaques": ["Free", "Open source (Apache 2.0)", "Install on your own server", "Portuguese, English and Spanish"],
+        "destaques": [
+            "Free",
+            "Open source (Apache 2.0)",
+            "Install on your own server",
+            "Portuguese, English and Spanish",
+        ],
         "sistemas": "Systems",
         "lema": "Open-source systems",
         "sobre": "About",
@@ -332,9 +354,7 @@ def main():
     if apoio.get("pix"):
         apoio["pix_codigo"] = pix_copia_e_cola(apoio["pix"], apoio["pix_nome"], apoio["pix_cidade"])
         apoio["pix_qr"] = qr_svg(apoio["pix_codigo"])
-    ambiente = Environment(
-        loader=FileSystemLoader(RAIZ / "modelos"), autoescape=select_autoescape()
-    )
+    ambiente = Environment(loader=FileSystemLoader(RAIZ / "modelos"), autoescape=select_autoescape())
     ambiente.filters["com_licenca"] = com_licenca
     ambiente.filters["no_idioma"] = no_idioma
     marcas = {nome: marca_svg(nome, cor) for nome, cor in MARCAS.items()}
@@ -355,14 +375,11 @@ def main():
             ("index.html", "inicio.html", None),
             ("sobre/index.html", "sobre.html", None),
             ("licenca/index.html", "licenca.html", None),
-        ] + [
-            (f"{s['id']}/index.html", "sistema.html", s) for s in dados["sistemas"]
-        ]
+        ] + [(f"{s['id']}/index.html", "sistema.html", s) for s in dados["sistemas"]]
         for destino, modelo, sistema in paginas:
             caminho = pasta + destino
             no_idioma_ = {
-                codigo: endereco + IDIOMAS[codigo] + destino.removesuffix("index.html")
-                for codigo in IDIOMAS
+                codigo: endereco + IDIOMAS[codigo] + destino.removesuffix("index.html") for codigo in IDIOMAS
             }
             mapa[destino] = no_idioma_
             profundidade = caminho.count("/")
