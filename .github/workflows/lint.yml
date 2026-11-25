@@ -1,0 +1,16 @@
+# Lint of construir.py with ruff, on every push to main and every pull request: the shared lint of
+# the public repositories, whose copy lives here (reusable-lint.yml; its source is
+# facchini-miguel/arauto's), with this repository's ruff.toml.
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ruff:
+    uses: ./.github/workflows/reusable-lint.yml

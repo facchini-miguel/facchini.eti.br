@@ -1,0 +1,7 @@
+# ruff, run by the shared lint (.github/workflows/lint.yml): the classic rules, real errors only,
+# as in the owner's other repositories that started with it (2026-11-25).
+line-length = 110
+target-version = "py313"  # the build's Python (build.yml)
+
+[lint]
+select = ["E4", "E7", "E9", "F"]
